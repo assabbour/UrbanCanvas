@@ -28,11 +28,6 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		F1CC137A2FF52B4E004903B8 /* Views */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Views;
-			sourceTree = "<group>";
-		};
 		F1CC137B2FF52B61004903B8 /* Components */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Components;
@@ -41,6 +36,11 @@
 		F1CC137C2FF52C49004903B8 /* App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = App;
+			sourceTree = "<group>";
+		};
+		F1CC13D62FF54699004903B8 /* Views */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -63,9 +63,9 @@
 				F1CC137D2FF531B1004903B8 /* README.md */,
 				F1CC137C2FF52C49004903B8 /* App */,
 				F1CC137B2FF52B61004903B8 /* Components */,
-				F1CC137A2FF52B4E004903B8 /* Views */,
 				F1CC13792FF52B44004903B8 /* Data */,
 				F1CC13752FF52AEB004903B8 /* Models */,
+				F1CC13D62FF54699004903B8 /* Views */,
 				F1CC13682FF52AAC004903B8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -96,9 +96,9 @@
 			fileSystemSynchronizedGroups = (
 				F1CC13752FF52AEB004903B8 /* Models */,
 				F1CC13792FF52B44004903B8 /* Data */,
-				F1CC137A2FF52B4E004903B8 /* Views */,
 				F1CC137B2FF52B61004903B8 /* Components */,
 				F1CC137C2FF52C49004903B8 /* App */,
+				F1CC13D62FF54699004903B8 /* Views */,
 			);
 			name = urban_canvas;
 			packageProductDependencies = (
