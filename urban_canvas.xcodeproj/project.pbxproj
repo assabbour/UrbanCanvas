@@ -6,15 +6,8 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		F1CC137E2FF531B7004903B8 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = F1CC137D2FF531B1004903B8 /* README.md */; };
-		F1CC13802FF531CF004903B8 /* .gitignore in Sources */ = {isa = PBXBuildFile; fileRef = F1CC137F2FF531C9004903B8 /* .gitignore */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
 		F1CC13672FF52AAC004903B8 /* urban_canvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = urban_canvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F1CC137D2FF531B1004903B8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = README.md; sourceTree = "<group>"; };
-		F1CC137F2FF531C9004903B8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -59,8 +52,6 @@
 		F1CC135E2FF52AAC004903B8 = {
 			isa = PBXGroup;
 			children = (
-				F1CC137F2FF531C9004903B8 /* .gitignore */,
-				F1CC137D2FF531B1004903B8 /* README.md */,
 				F1CC137C2FF52C49004903B8 /* App */,
 				F1CC137B2FF52B61004903B8 /* Components */,
 				F1CC13792FF52B44004903B8 /* Data */,
@@ -156,8 +147,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1CC13802FF531CF004903B8 /* .gitignore in Sources */,
-				F1CC137E2FF531B7004903B8 /* README.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
