@@ -1,6 +1,6 @@
 import Foundation
 
-// Représente une œuvre de Street Art.
+// Représente une œuvre de street art affichée dans l'application.
 struct Artwork: Identifiable {
     let id: UUID
     let title: String
@@ -10,6 +10,10 @@ struct Artwork: Identifiable {
     let description: String
     let imageName: String
     let type: ArtType
+    let condition: String
+    let date: String
+    let latitude: Double
+    let longitude: Double
 
     init(
         id: UUID = UUID(),
@@ -19,7 +23,11 @@ struct Artwork: Identifiable {
         location: String,
         description: String,
         imageName: String,
-        type: ArtType
+        type: ArtType,
+        condition: String,
+        date: String,
+        latitude: Double,
+        longitude: Double
     ) {
         self.id = id
         self.title = title
@@ -29,5 +37,9 @@ struct Artwork: Identifiable {
         self.description = description
         self.imageName = imageName
         self.type = type
+        self.condition = condition
+        self.date = date
+        self.latitude = latitude
+        self.longitude = longitude
     }
 }
