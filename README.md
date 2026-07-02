@@ -24,6 +24,8 @@ Afficher une liste d'œuvres de Street Art et consulter le détail de chaque œu
 
 - main : version stable
 - dev : développement
+
+
 UrbanCanvas
 │
 ├── Models
@@ -40,19 +42,20 @@ UrbanCanvas
 │   │
 │   └── Artwork.swift
 │       (Représente une œuvre de Street Art.
-│       Contient le titre, l'artiste, la ville, la description, l'image, le type,
-│       la date, l'état et la localisation.
+│       Contient le titre, l'artiste, la ville, la description, le nom de l'image,
+│       le type, la date, l'état, la localisation ainsi que les coordonnées GPS.
 │       Utilise Artist.swift et ArtType.swift.
-│       Utilisé par MockData.swift, ArtworkListView.swift et ArtworkDetailView.swift.)
+│       Utilisé par MockData.swift, ArtworkListView.swift,
+│       ArtworkDetailView.swift et ArtworkMapView.swift.)
 │
 ├── Data
 │   │   (Contient les données statiques de l'application.
 │   │   Pour cette V1, il n'y a pas d'API ni de base de données.)
 │   │
 │   └── MockData.swift
-│       (Centralise les artistes et les œuvres codés en dur.
-│       Crée des objets Artist et Artwork.
-│       Utilisé par ArtworkListView.swift pour afficher la liste.)
+│       (Centralise tous les artistes et les œuvres codés en dur.
+│       Crée les objets Artist et Artwork utilisés dans toute l'application.
+│       Utilisé principalement par ArtworkListView.swift.)
 │
 ├── Views
 │   │   (Contient les écrans principaux de l'application.
@@ -62,44 +65,53 @@ UrbanCanvas
 │   │   (Écran principal de la V1.
 │   │   Récupère les œuvres depuis MockData.swift.
 │   │   Affiche chaque œuvre avec ArtworkRowView.swift.
-│   │   Permet d'ouvrir ArtworkDetailView.swift au clic.)
+│   │   Permet d'ouvrir ArtworkDetailView.swift grâce à NavigationLink.)
 │   │
 │   └── ArtworkDetailView.swift
-│       (Écran de détail d'une œuvre sélectionnée.
+│       (Écran affichant le détail complet d'une œuvre.
 │       Reçoit un objet Artwork depuis ArtworkListView.swift.
 │       Utilise DetailHeaderImageView.swift pour afficher la grande image.
-│       Utilise ArtworkInfoRowView.swift pour afficher les informations détaillées.)
+│       Utilise ArtworkInfoRowView.swift pour afficher les informations.
+│       Utilise ArtworkMapView.swift pour afficher la localisation sur une carte.)
 │
 ├── Components
 │   │   (Contient les composants SwiftUI réutilisables.
 │   │   Ces composants évitent de répéter le même code dans plusieurs vues.)
 │   │
 │   ├── ArtworkRowView.swift
-│   │   (Affiche une ligne d'œuvre dans la liste.
+│   │   (Affiche une œuvre dans la liste.
 │   │   Reçoit un objet Artwork.
-│   │   Affiche l'image, le titre, la ville et l'icône de navigation.
+│   │   Affiche l'image, le titre, la ville et une icône de navigation.
 │   │   Utilisé par ArtworkListView.swift.)
 │   │
 │   ├── DetailHeaderImageView.swift
-│   │   (Affiche la grande image en haut de l'écran détail.
-│   │   Reçoit le nom de l'image depuis Artwork.imageName.
+│   │   (Affiche la grande image de l'œuvre.
+│   │   Vérifie si l'image existe dans Assets.xcassets.
+│   │   Si elle est absente, affiche automatiquement l'image "placeholder".
 │   │   Utilisé par ArtworkDetailView.swift.)
 │   │
-│   └── ArtworkInfoRowView.swift
-│       (Affiche une information sous forme titre + valeur.
-│       Exemple : Type : Mural, Auteur : KAN, Date : 2022.
+│   ├── ArtworkInfoRowView.swift
+│   │   (Affiche une information sous forme "Titre : Valeur".
+│   │   Exemple : Type : Mural, Auteur : KAN, Date : 2022.
+│   │   Utilisé par ArtworkDetailView.swift.)
+│   │
+│   └── ArtworkMapView.swift
+│       (Affiche une carte interactive avec MapKit.
+│       Positionne un marqueur sur les coordonnées GPS de l'œuvre.
+│       Reçoit un objet Artwork.
 │       Utilisé par ArtworkDetailView.swift.)
 │
-└── UrbanCanvas
+└── App
     │   (Contient les fichiers générés au démarrage du projet SwiftUI.)
     │
     ├── Assets.xcassets
-    │   (Contient les images, l'icône de l'application et les ressources graphiques.
+    │   (Contient les images des œuvres, l'image "placeholder",
+    │   l'icône de l'application ainsi que les ressources graphiques.
     │   Les images sont appelées avec Image(artwork.imageName).)
     │
     ├── ContentView.swift
-    │   (Vue principale affichée au lancement.
-    │   Elle affiche ArtworkListView.swift pour démarrer l'application sur la liste.)
+    │   (Vue affichée au lancement de l'application.
+    │   Charge ArtworkListView.swift comme écran principal.)
     │
     └── UrbanCanvasApp.swift
         (Point d'entrée de l'application SwiftUI.

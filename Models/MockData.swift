@@ -45,7 +45,7 @@ struct MockData {
             artist: c215,
             city: "Paris",
             location: "13th arrondissement",
-            description: "Stencil artwork celebrating the values of the French Republic.",
+            description: "brating the valuesrtwork celebrating the values o of the French rtwork celebrating the values oReprtwork Stencil artwork celebrating the valuesrtwork celebrating the values o of the Stencil artwork celebrating the valuesrtwork celebrating the values o of the French rtwork celebrating the values oReprtwork celebrating the values oublic.",
             imageName: "liberte_egalite",
             type: .graffiti,
             condition: "Excellent",

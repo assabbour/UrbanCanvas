@@ -4,45 +4,50 @@ import SwiftUI
 // Écran qui affiche le détail complet d'une œuvre.
 struct ArtworkDetailView: View {
 
-    // oeuvre sélectionnée depuis la liste.
+    // Œuvre sélectionnée depuis la liste.
     let artwork: Artwork
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
 
-                // Image principale de l'œuvre.
+        // Permet de faire défiler le contenu sur iPhone.
+        ScrollView {
+
+            // Organise l'écran de haut en bas.
+            VStack(alignment: .leading, spacing: 4) {
+
+                // Grande image affichée tout en haut.
                 DetailHeaderImageView(imageName: artwork.imageName)
 
-                VStack(alignment: .leading, spacing: 12) {
+                // Zone qui contient le texte et les informations.
+                VStack(alignment: .leading, spacing: 6) {
 
                     // Titre de l'œuvre.
                     Text(artwork.title)
-                        .font(.title2)
+                        .font(.title3)
                         .fontWeight(.bold)
-                        .foregroundStyle(Color.orange)
+                        .foregroundStyle(.orange)
 
                     // Description de l'œuvre.
                     Text(artwork.description)
-                        .font(.body)
-
-                    Divider()
-
-                    // Informations complémentaires.
+                        .font(.caption)
+                        .lineSpacing(3)
+                        .padding(.bottom, 10)
+                    // Informations détaillées.
                     ArtworkInfoRowView(title: "Type", value: artwork.type.rawValue)
                     ArtworkInfoRowView(title: "Condition", value: artwork.condition)
                     ArtworkInfoRowView(title: "Date", value: artwork.date)
                     ArtworkInfoRowView(title: "Auteur", value: artwork.artist.name)
                     ArtworkInfoRowView(title: "Localisation", value: artwork.location)
-                    
-                    // Carte affichant la position de l'œuvre.
+
+                    // Carte affichant l'emplacement de l'œuvre.
                     ArtworkMapView(artwork: artwork)
                 }
                 .padding()
             }
         }
-        .navigationTitle(artwork.title)
-        .navigationBarTitleDisplayMode(.inline)
+        // Permet à l'image de commencer tout en haut de l'écran,
+        // comme sur la maquette.
+        .ignoresSafeArea(edges: .top)
     }
 }
 

@@ -16,12 +16,13 @@ struct DetailHeaderImageView: View {
     }
 
     var body: some View {
-
+        
         Image(displayedImage)
             .resizable()          // Autorise le redimensionnement de l'image.
             .scaledToFill()       // Remplit toute la largeur disponible.
             .frame(height: 260)   // Hauteur fixe de l'image.
             .clipped()            // Coupe ce qui dépasse du cadre.
+        
     }
 }
 

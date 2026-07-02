@@ -12,7 +12,7 @@ struct ArtworkInfoRowView: View {
     let value: String
 
     var body: some View {
-        HStack(alignment: .top, spacing: 4) {
+        HStack(alignment: .top, spacing: 2) {
 
             Text("\(title) :")
                 .fontWeight(.bold)

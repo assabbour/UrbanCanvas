@@ -24,11 +24,6 @@ struct ArtworkRowView: View {
                     .font(.caption)
                     .foregroundStyle(.gray)
             }
-
-            Spacer()
-
-            Image(systemName: "chevron.right")
-                .foregroundStyle(.gray)
         }
         .padding(.vertical, 8)
     }

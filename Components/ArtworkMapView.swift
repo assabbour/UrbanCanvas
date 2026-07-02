@@ -33,7 +33,7 @@ struct ArtworkMapView: View {
                 )
             )
         }
-        .frame(height: 160)
+        .frame(height: 130)
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 }
