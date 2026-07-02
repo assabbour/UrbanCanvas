@@ -36,4 +36,14 @@ struct ArtworkListViewTests {
 
         #expect(!firstArtwork.title.isEmpty)
     }
+    
+    
+    // Vérifie que la première œuvre affichée dans la liste possède une ville.
+    @Test("La première œuvre affichée possède une ville")
+    func firstArtworkShouldHaveCity() {
+        let view = ArtworkListView()
+        let firstArtwork = view.artworks[0]
+
+        #expect(!firstArtwork.city.isEmpty)
+    }
 }
