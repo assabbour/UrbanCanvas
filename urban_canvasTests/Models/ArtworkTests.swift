@@ -59,4 +59,15 @@ struct ArtworkTests {
             #expect(!artwork.location.isEmpty)
         }
     }
+    
+    // Vérifie que chaque œuvre possède une date.
+    @Test("Toutes les œuvres possèdent une date")
+    func artworkShouldHaveDate() {
+
+        for artwork in MockData.artworks {
+            #expect(!artwork.date.isEmpty)
+        }
+    }
+    
+    
 }
