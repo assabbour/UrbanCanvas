@@ -69,5 +69,14 @@ struct ArtworkTests {
         }
     }
     
+    // Vérifie que chaque œuvre possède des coordonnées GPS utilisables pour la carte.
+    @Test("Toutes les œuvres possèdent des coordonnées GPS")
+    func artworkShouldHaveCoordinates() {
+
+        for artwork in MockData.artworks {
+            #expect(artwork.latitude != 0)
+            #expect(artwork.longitude != 0)
+        }
+    }
     
 }
