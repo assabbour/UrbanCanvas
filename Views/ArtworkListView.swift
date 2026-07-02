@@ -1,12 +1,15 @@
 import SwiftUI
 
-// Écran qui affiche toutes les œuvres disponibles.
+// Écran principal qui affiche les œuvres.
+// Il permet aussi de choisir entre le mode Liste et le mode Carte.
 struct ArtworkListView: View {
 
     // Contrôle l'affichage de la popup des filtres.
     @State private var isFilterPresented = false
+
     // Mode d'affichage sélectionné : liste ou carte.
     @State private var selectedMode: DisplayMode = .list
+
     // Données statiques utilisées par la liste.
     let artworks = MockData.artworks
 
@@ -14,15 +17,12 @@ struct ArtworkListView: View {
         NavigationStack {
             ZStack {
 
-                VStack(alignment: .leading, spacing: 16) {
-                    // Boutons Liste / Carte.
-                    DisplayModePickerView(selectedMode: $selectedMode)
-                        .padding(.horizontal)
+                VStack(alignment: .leading, spacing: 12) {
 
+                    // Ligne du haut : bouton Liste/Carte + bouton filtre.
                     HStack {
-                        Text("Liste des Street arts")
-                            .font(.title)
-                            .fontWeight(.bold)
+                        DisplayModePickerView(selectedMode: $selectedMode)
+                            .frame(width: 270)
 
                         Spacer()
 
@@ -31,7 +31,15 @@ struct ArtworkListView: View {
                         }
                     }
                     .padding(.horizontal)
+                    .padding(.top, 12)
 
+                    // Titre de l'écran.
+                    Text("Liste des Street arts")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(.horizontal)
+
+                    // Liste des œuvres.
                     List(artworks) { artwork in
                         NavigationLink {
                             ArtworkDetailView(artwork: artwork)
@@ -42,8 +50,8 @@ struct ArtworkListView: View {
                     .listStyle(.plain)
                 }
 
+                // Popup de filtres affichée au-dessus de la liste.
                 if isFilterPresented {
-
                     Color.black.opacity(0.25)
                         .ignoresSafeArea()
                         .onTapGesture {
