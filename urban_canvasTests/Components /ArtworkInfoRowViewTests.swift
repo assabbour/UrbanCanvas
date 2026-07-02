@@ -16,4 +16,17 @@ struct ArtworkInfoRowViewTests {
         #expect(view.title == "Type")
         #expect(view.value == "Mural")
     }
+    
+    
+    // Vérifie que le titre est correctement transmis au composant.
+    @Test("Le composant reçoit le bon titre")
+    func artworkInfoRowViewShouldReceiveTitle() {
+
+        let view = ArtworkInfoRowView(
+            title: "Auteur",
+            value: "C215"
+        )
+
+        #expect(view.title == "Auteur")
+    }
 }
