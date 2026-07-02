@@ -62,7 +62,19 @@ struct MockDataFilterTests {
         )
     }
     
-    
+    @Test("Le filtre Collage retourne uniquement des collages")
+    func collageFilterReturnsOnlyCollages() {
+
+        let collages = MockData.artworks.filter {
+            $0.type == .collage
+        }
+
+        #expect(
+            collages.allSatisfy {
+                $0.type == .collage
+            }
+        )
+    }
     
     
     
