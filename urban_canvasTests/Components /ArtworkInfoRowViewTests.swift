@@ -29,4 +29,17 @@ struct ArtworkInfoRowViewTests {
 
         #expect(view.title == "Auteur")
     }
+    
+    
+    // Vérifie que la valeur est correctement transmise.
+    @Test("Le composant reçoit la bonne valeur")
+    func artworkInfoRowViewShouldReceiveValue() {
+
+        let view = ArtworkInfoRowView(
+            title: "Ville",
+            value: "Paris"
+        )
+
+        #expect(view.value == "Paris")
+    }
 }
