@@ -51,4 +51,12 @@ struct ArtworkTests {
         }
     }
     
+    // Vérifie que chaque œuvre possède une localisation.
+    @Test("Toutes les œuvres possèdent une localisation")
+    func artworkShouldHaveLocation() {
+
+        for artwork in MockData.artworks {
+            #expect(!artwork.location.isEmpty)
+        }
+    }
 }
