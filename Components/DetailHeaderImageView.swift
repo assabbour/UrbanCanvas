@@ -1,18 +1,27 @@
-import Foundation
 import SwiftUI
 
-// Composant réutilisable pour afficher la grande image en haut du détail.
+// Composant réutilisable qui affiche la grande image
+// en haut de l'écran de détail d'une œuvre.
 struct DetailHeaderImageView: View {
 
-    // Nom de l'image stockée dans Assets.xcassets.
+    // Nom de l'image provenant des données.
     let imageName: String
 
+    // Vérifie si l'image existe dans Assets.xcassets.
+    // Si elle n'existe pas, on utilise l'image "placeholder".
+    private var displayedImage: String {
+        UIImage(named: imageName) != nil
+            ? imageName
+            : "placeholder"
+    }
+
     var body: some View {
-        Image(imageName)
-            .resizable()        // Permet de redimensionner l'image.
-            .scaledToFill()     // Remplit toute la zone même si l'image est coupée.
-            .frame(height: 260) // Hauteur fixe comme sur la maquette.
-            .clipped()          // Coupe ce qui dépasse du cadre.
+
+        Image(displayedImage)
+            .resizable()          // Autorise le redimensionnement de l'image.
+            .scaledToFill()       // Remplit toute la largeur disponible.
+            .frame(height: 260)   // Hauteur fixe de l'image.
+            .clipped()            // Coupe ce qui dépasse du cadre.
     }
 }
 

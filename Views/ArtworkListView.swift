@@ -11,8 +11,13 @@ struct ArtworkListView: View {
     var body: some View {
         NavigationStack {
             List(artworks) { artwork in
-                ArtworkRowView(artwork: artwork)
+                NavigationLink {
+                    ArtworkDetailView(artwork: artwork)
+                } label: {
+                    ArtworkRowView(artwork: artwork)
+                }
             }
+            
             .navigationTitle("Liste des Street arts")
         }
     }

@@ -4,7 +4,7 @@ import SwiftUI
 // Écran qui affiche le détail complet d'une œuvre.
 struct ArtworkDetailView: View {
 
-    // Œuvre sélectionnée depuis la liste.
+    // oeuvre sélectionnée depuis la liste.
     let artwork: Artwork
 
     var body: some View {
