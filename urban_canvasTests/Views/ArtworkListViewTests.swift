@@ -47,3 +47,14 @@ struct ArtworkListViewTests {
         #expect(!firstArtwork.city.isEmpty)
     }
 }
+
+@Test("ArtworkListView peut être créée")
+func artworkListViewCanBeCreated() {
+
+    let view = ArtworkListView()
+
+    #expect(view.artworks.count == MockData.artworks.count)
+}
+
+
+
