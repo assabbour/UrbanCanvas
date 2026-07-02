@@ -34,6 +34,9 @@ struct ArtworkDetailView: View {
                     ArtworkInfoRowView(title: "Date", value: artwork.date)
                     ArtworkInfoRowView(title: "Auteur", value: artwork.artist.name)
                     ArtworkInfoRowView(title: "Localisation", value: artwork.location)
+                    
+                    // Carte affichant la position de l'œuvre.
+                    ArtworkMapView(artwork: artwork)
                 }
                 .padding()
             }
