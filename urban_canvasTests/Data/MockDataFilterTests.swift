@@ -33,5 +33,19 @@ struct MockDataFilterTests {
         )
     }
     
+    @Test("Le filtre Graffiti retourne uniquement des graffitis")
+    func graffitiFilterReturnsOnlyGraffiti() {
+
+        let graffitis = MockData.artworks.filter {
+            $0.type == .graffiti
+        }
+
+        #expect(
+            graffitis.allSatisfy {
+                $0.type == .graffiti
+            }
+        )
+    }
+    
     
 }
