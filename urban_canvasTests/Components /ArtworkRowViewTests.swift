@@ -12,4 +12,15 @@ struct ArtworkRowViewTests {
 
         #expect(view.artwork.title == artwork.title)
     }
+    
+    
+    // Vérifie que le composant reçoit bien la ville de l'œuvre.
+    @Test("Le composant ligne reçoit la bonne ville")
+    func artworkRowViewShouldReceiveCity() {
+
+        let artwork = MockData.artworks[0]
+        let view = ArtworkRowView(artwork: artwork)
+
+        #expect(view.artwork.city == artwork.city)
+    }
 }
