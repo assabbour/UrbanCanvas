@@ -1,24 +1,63 @@
-
-import Foundation
 import SwiftUI
 
 // Écran qui affiche toutes les œuvres disponibles.
 struct ArtworkListView: View {
 
-    // Données statiques utilisées par l'écran.
+    // Contrôle l'affichage de la popup des filtres.
+    @State private var isFilterPresented = false
+
+    // Données statiques utilisées par la liste.
     let artworks = MockData.artworks
 
     var body: some View {
         NavigationStack {
-            List(artworks) { artwork in
-                NavigationLink {
-                    ArtworkDetailView(artwork: artwork)
-                } label: {
-                    ArtworkRowView(artwork: artwork)
+            ZStack {
+
+                VStack(alignment: .leading, spacing: 16) {
+
+                    HStack {
+                        Text("Liste des Street arts")
+                            .font(.title)
+                            .fontWeight(.bold)
+
+                        Spacer()
+
+                        FilterButtonView {
+                            isFilterPresented.toggle()
+                        }
+                    }
+                    .padding(.horizontal)
+
+                    List(artworks) { artwork in
+                        NavigationLink {
+                            ArtworkDetailView(artwork: artwork)
+                        } label: {
+                            ArtworkRowView(artwork: artwork)
+                        }
+                    }
+                    .listStyle(.plain)
+                }
+
+                if isFilterPresented {
+
+                    Color.black.opacity(0.25)
+                        .ignoresSafeArea()
+                        .onTapGesture {
+                            isFilterPresented = false
+                        }
+
+                    FilterPopupView {
+                        isFilterPresented = false
+                    }
+                    .frame(
+                        maxWidth: .infinity,
+                        maxHeight: .infinity,
+                        alignment: .topTrailing
+                    )
+                    .padding(.trailing, 20)
+                    .offset(y: 25)
                 }
             }
-            
-            .navigationTitle("Liste des Street arts")
         }
     }
 }
