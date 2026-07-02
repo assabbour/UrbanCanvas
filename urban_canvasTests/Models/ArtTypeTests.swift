@@ -9,4 +9,16 @@ struct ArtTypeTests {
 
         #expect(!ArtType.allCases.isEmpty)
     }
+    
+    
+    // Vérifie que les types d'œuvres ont les bonnes valeurs affichées.
+    @Test("Les types d'œuvres possèdent les bonnes valeurs")
+    func artTypesShouldHaveExpectedValues() {
+
+        #expect(ArtType.mural.rawValue == "Mural")
+        #expect(ArtType.graffiti.rawValue == "Graffiti")
+        #expect(ArtType.collage.rawValue == "Collage")
+        #expect(ArtType.installation.rawValue == "Installation")
+    }
+    
 }
