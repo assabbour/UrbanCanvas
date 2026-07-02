@@ -26,4 +26,14 @@ struct ArtworkListViewTests {
 
         #expect(view.artworks.count == MockData.artworks.count)
     }
+    
+    
+    // Vérifie que la première œuvre affichée dans la liste possède un titre.
+    @Test("La première œuvre affichée possède un titre")
+    func firstArtworkShouldHaveTitle() {
+        let view = ArtworkListView()
+        let firstArtwork = view.artworks[0]
+
+        #expect(!firstArtwork.title.isEmpty)
+    }
 }
