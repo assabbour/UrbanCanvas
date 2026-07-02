@@ -48,4 +48,22 @@ struct MockDataFilterTests {
     }
     
     
+    @Test("Le filtre Installation retourne uniquement des installations")
+    func installationFilterReturnsOnlyInstallations() {
+
+        let installations = MockData.artworks.filter {
+            $0.type == .installation
+        }
+
+        #expect(
+            installations.allSatisfy {
+                $0.type == .installation
+            }
+        )
+    }
+    
+    
+    
+    
+    
 }
