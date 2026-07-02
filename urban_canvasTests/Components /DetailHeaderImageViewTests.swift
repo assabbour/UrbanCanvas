@@ -20,4 +20,13 @@ struct DetailHeaderImageViewTests {
 
         #expect(view.imageName == "joconde_marseille")
     }
+    
+    @Test("Le nom d'image ne doit pas être vide")
+    func detailHeaderImageNameShouldNotBeEmpty() {
+
+        // Vérifie que le composant reçoit un nom d'image non vide.
+        let view = DetailHeaderImageView(imageName: "placeholder")
+
+        #expect(!view.imageName.isEmpty)
+    }
 }
