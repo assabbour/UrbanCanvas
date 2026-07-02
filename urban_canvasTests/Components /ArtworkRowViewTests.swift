@@ -23,4 +23,15 @@ struct ArtworkRowViewTests {
 
         #expect(view.artwork.city == artwork.city)
     }
+    
+    
+    // Vérifie que le composant reçoit bien le nom de l'image.
+    @Test("Le composant ligne reçoit la bonne image")
+    func artworkRowViewShouldReceiveImage() {
+
+        let artwork = MockData.artworks[0]
+        let view = ArtworkRowView(artwork: artwork)
+
+        #expect(view.artwork.imageName == artwork.imageName)
+    }
 }
