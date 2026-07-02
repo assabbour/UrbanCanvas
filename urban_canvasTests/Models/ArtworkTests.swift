@@ -10,4 +10,16 @@ struct ArtworkTests {
             #expect(!artwork.title.isEmpty)
         }
     }
+    
+  
+    // Vérifie que chaque œuvre possède une description.
+    @Test("Toutes les œuvres possèdent une description")
+    func artworkShouldHaveDescription() {
+
+        for artwork in MockData.artworks {
+
+            #expect(!artwork.description.isEmpty)
+
+        }
+    }
 }
