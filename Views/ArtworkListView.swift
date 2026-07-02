@@ -20,18 +20,13 @@ struct ArtworkListView: View {
                 VStack(alignment: .leading, spacing: 12) {
 
                     // Ligne du haut : bouton Liste/Carte + bouton filtre.
-                    HStack {
-                        DisplayModePickerView(selectedMode: $selectedMode)
-                            .frame(width: 270)
-
-                        Spacer()
-
-                        FilterButtonView {
+                    // Barre d'outils réutilisable : Liste/Carte + filtre.
+                    ArtworkTopBarView(
+                        selectedMode: $selectedMode,
+                        onFilterTap: {
                             isFilterPresented.toggle()
                         }
-                    }
-                    .padding(.horizontal)
-                    .padding(.top, 12)
+                    )
 
                     // Titre de l'écran.
                     Text("Liste des Street arts")
