@@ -42,3 +42,13 @@ struct DisplayModePickerViewTests {
     }
     
 }
+
+
+// Vérifie que le composant est créé avec un Binding valide.
+@Test("Le composant reçoit un Binding valide")
+func displayModePickerShouldReceiveBinding() {
+
+    let view = DisplayModePickerView(selectedMode: .constant(.list))
+
+    #expect(view.selectedMode == .list)
+}
