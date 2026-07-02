@@ -32,6 +32,7 @@
 		F1CFF4342FF69FBC00357C40 /* Exceptions for "Components" folder in "urban_canvasTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				ArtworkTopBarView.swift,
 				FilterOptionButtonView.swift,
 				FilterPopupView.swift,
 			);
