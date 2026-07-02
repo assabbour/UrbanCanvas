@@ -7,13 +7,37 @@ struct DisplayModePickerView: View {
     @Binding var selectedMode: DisplayMode
 
     var body: some View {
-        Picker("Mode d'affichage", selection: $selectedMode) {
-            ForEach(DisplayMode.allCases) { mode in
-                Text(mode.rawValue)
-                    .tag(mode)
+        HStack(spacing: 0) {
+
+            Button {
+                selectedMode = .list
+            } label: {
+                Text("Liste")
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 8)
+                    .background(selectedMode == .list ? Color.orange : Color.clear)
+                    .foregroundStyle(.black)
+                    .clipShape(Capsule())
+            }
+
+            Button {
+                selectedMode = .map
+            } label: {
+                Text("Carte")
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 8)
+                    .background(selectedMode == .map ? Color.orange : Color.clear)
+                    .foregroundStyle(.black)
+                    .clipShape(Capsule())
             }
         }
-        .pickerStyle(.segmented)
+        .padding(3)
+        .background(Color.white)
+        .clipShape(Capsule())
     }
 }
 
