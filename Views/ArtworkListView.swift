@@ -5,7 +5,8 @@ struct ArtworkListView: View {
 
     // Contrôle l'affichage de la popup des filtres.
     @State private var isFilterPresented = false
-
+    // Mode d'affichage sélectionné : liste ou carte.
+    @State private var selectedMode: DisplayMode = .list
     // Données statiques utilisées par la liste.
     let artworks = MockData.artworks
 
@@ -14,6 +15,9 @@ struct ArtworkListView: View {
             ZStack {
 
                 VStack(alignment: .leading, spacing: 16) {
+                    // Boutons Liste / Carte.
+                    DisplayModePickerView(selectedMode: $selectedMode)
+                        .padding(.horizontal)
 
                     HStack {
                         Text("Liste des Street arts")
