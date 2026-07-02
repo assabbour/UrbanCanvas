@@ -22,4 +22,16 @@ struct ArtworkTests {
 
         }
     }
+    
+    // Vérifie que chaque œuvre possède un nom d'image.
+    @Test("Toutes les œuvres possèdent une image")
+    func artworkShouldHaveImage() {
+
+        for artwork in MockData.artworks {
+
+            #expect(!artwork.imageName.isEmpty)
+
+        }
+    }
+    
 }
