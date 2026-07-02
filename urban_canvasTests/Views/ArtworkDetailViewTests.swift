@@ -32,4 +32,14 @@ struct ArtworkDetailViewTests {
 
         #expect(view.artwork.imageName == artwork.imageName)
     }
+    
+    // Vérifie que la vue détail reçoit la bonne localisation.
+    @Test("La vue détail reçoit la bonne localisation")
+    func artworkDetailViewShouldReceiveLocation() {
+
+        let artwork = MockData.artworks[0]
+        let view = ArtworkDetailView(artwork: artwork)
+
+        #expect(view.artwork.location == artwork.location)
+    }
 }
