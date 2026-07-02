@@ -3,10 +3,11 @@ import Testing
 
 struct ArtworkDetailViewTests {
 
+    
+    // Vérifie que la vue détail peut être créée avec une œuvre.
     @Test("La vue détail peut être créée")
     func artworkDetailViewCanBeCreated() {
 
-        // Vérifie que la vue détail peut être créée avec une œuvre.
         let artwork = MockData.artworks[0]
         let view = ArtworkDetailView(artwork: artwork)
 
@@ -17,6 +18,7 @@ struct ArtworkDetailViewTests {
     // Vérifie que la vue détail reçoit correctement l'artiste.
     @Test("La vue détail reçoit le bon artiste")
     func artworkDetailViewShouldReceiveArtist() {
+        
         let artwork = MockData.artworks[0]
         let view = ArtworkDetailView(artwork: artwork)
         
@@ -27,6 +29,7 @@ struct ArtworkDetailViewTests {
     // Vérifie que la vue détail reçoit le bon nom d'image.
     @Test("La vue détail reçoit la bonne image")
     func artworkDetailViewShouldReceiveImage() {
+
         let artwork = MockData.artworks[0]
         let view = ArtworkDetailView(artwork: artwork)
 
