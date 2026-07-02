@@ -19,4 +19,21 @@ struct ArtistTests {
             #expect(!artist.name.isEmpty)
         }
     }
+    
+    // Vérifie que chaque artiste possède une ville.
+    @Test("Tous les artistes possèdent une ville")
+    func artistsShouldHaveCity() {
+
+        let artists = [
+            MockData.kan,
+            MockData.c215,
+            MockData.mto,
+            MockData.invader,
+            MockData.jace
+        ]
+
+        for artist in artists {
+            #expect(!artist.city.isEmpty)
+        }
+    }
 }
