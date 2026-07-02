@@ -15,4 +15,23 @@ struct MockDataFilterTests {
         // exactement aux données mockées.
         #expect(artworks.count == MockData.artworks.count)
     }
+    
+    @Test("Le filtre Mural retourne uniquement des murals")
+    func muralFilterReturnsOnlyMurals() {
+
+        // Filtre uniquement les œuvres de type mural.
+        let murals = MockData.artworks.filter {
+            $0.type == .mural
+        }
+
+        // Vérifie que toutes les œuvres
+        // retournées sont bien des murals.
+        #expect(
+            murals.allSatisfy {
+                $0.type == .mural
+            }
+        )
+    }
+    
+    
 }
