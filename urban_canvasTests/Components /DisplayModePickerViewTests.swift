@@ -23,7 +23,6 @@ struct DisplayModePickerViewTests {
         #expect(view.selectedMode == .map)
     }
 
-    
     // Vérifie que le mode Liste est correctement utilisé.
     @Test("Le mode Liste est sélectionné")
     func displayModeShouldBeList() {
@@ -31,6 +30,15 @@ struct DisplayModePickerViewTests {
         let view = DisplayModePickerView(selectedMode: .constant(.list))
 
         #expect(view.selectedMode == DisplayMode.list)
+    }
+    
+    // Vérifie que le mode Carte est correctement utilisé.
+    @Test("Le mode Carte est sélectionné")
+    func displayModeShouldBeMap() {
+
+        let view = DisplayModePickerView(selectedMode: .constant(.map))
+
+        #expect(view.selectedMode == DisplayMode.map)
     }
     
 }
