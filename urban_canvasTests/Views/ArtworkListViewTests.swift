@@ -18,4 +18,12 @@ struct ArtworkListViewTests {
 
         #expect(!view.artworks.isEmpty)
     }
+    
+    // Vérifie que la liste contient exactement les œuvres de MockData.
+    @Test("La vue liste contient le bon nombre d'œuvres")
+    func artworkListViewShouldContainExpectedArtworkCount() {
+        let view = ArtworkListView()
+
+        #expect(view.artworks.count == MockData.artworks.count)
+    }
 }
