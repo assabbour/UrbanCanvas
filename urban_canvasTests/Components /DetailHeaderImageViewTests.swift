@@ -40,4 +40,14 @@ struct DetailHeaderImageViewTests {
 
         #expect(view.imageName == "placeholder")
     }
+    
+    // Vérifie que le composant peut recevoir une image depuis MockData.
+    @Test("Le composant accepte l'image d'une œuvre")
+    func detailHeaderImageViewShouldAcceptArtworkImage() {
+
+        let artwork = MockData.artworks[0]
+        let view = DetailHeaderImageView(imageName: artwork.imageName)
+
+        #expect(view.imageName == artwork.imageName)
+    }
 }
