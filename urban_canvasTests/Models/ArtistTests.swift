@@ -36,4 +36,21 @@ struct ArtistTests {
             #expect(!artist.city.isEmpty)
         }
     }
+    
+    // Vérifie que chaque artiste possède une biographie.
+    @Test("Tous les artistes possèdent une biographie")
+    func artistsShouldHaveBiography() {
+
+        let artists = [
+            MockData.kan,
+            MockData.c215,
+            MockData.mto,
+            MockData.invader,
+            MockData.jace
+        ]
+
+        for artist in artists {
+            #expect(!artist.bio.isEmpty)
+        }
+    }
 }
