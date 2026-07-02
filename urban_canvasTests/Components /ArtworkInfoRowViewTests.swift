@@ -42,4 +42,17 @@ struct ArtworkInfoRowViewTests {
 
         #expect(view.value == "Paris")
     }
+    
+    
+    // Vérifie que le titre n'est pas vide.
+    @Test("Le titre ne doit pas être vide")
+    func artworkInfoRowViewTitleShouldNotBeEmpty() {
+
+        let view = ArtworkInfoRowView(
+            title: "Date",
+            value: "2023"
+        )
+
+        #expect(!view.title.isEmpty)
+    }
 }
