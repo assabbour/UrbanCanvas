@@ -10,4 +10,14 @@ struct DetailHeaderImageViewTests {
 
         #expect(view.imageName == "liberte_egalite")
     }
+    
+    
+    // Vérifie que le nom d'image est bien transmis au composant.
+    @Test("Le composant image détail reçoit le bon nom d'image")
+    func detailHeaderImageViewShouldReceiveImageName() {
+
+        let view = DetailHeaderImageView(imageName: "joconde_marseille")
+
+        #expect(view.imageName == "joconde_marseille")
+    }
 }
