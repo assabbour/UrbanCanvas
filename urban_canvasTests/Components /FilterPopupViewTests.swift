@@ -19,4 +19,14 @@ struct FilterPopupViewTests {
 
         #expect(view.onClose != nil)
     }
+    
+    @Test("La popup peut être créée plusieurs fois")
+    func filterPopupCanBeCreatedMultipleTimes() {
+
+        let popup1 = FilterPopupView {}
+        let popup2 = FilterPopupView {}
+
+        #expect(popup1.onClose != nil)
+        #expect(popup2.onClose != nil)
+    }
 }
