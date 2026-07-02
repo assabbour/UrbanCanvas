@@ -1,8 +1,22 @@
-//
-//  FilterPopupViewTests.swift
-//  urban_canvasTests
-//
-//  Created by apprenant 108 on 02/07/2026.
-//
+import Testing
+@testable import urban_canvas
 
-import Foundation
+struct FilterPopupViewTests {
+
+    @Test("La popup de filtre peut être créée")
+    func filterPopupCanBeCreated() {
+
+        let view = FilterPopupView {}
+
+        #expect(view.onClose != nil)
+    }
+    
+    
+    @Test("La popup possède une action de fermeture")
+    func filterPopupHasCloseAction() {
+
+        let view = FilterPopupView {}
+
+        #expect(view.onClose != nil)
+    }
+}
