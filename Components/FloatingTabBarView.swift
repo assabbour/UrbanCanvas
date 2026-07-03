@@ -1,45 +1,41 @@
 import SwiftUI
 
-// Barre de navigation flottante affichée en bas de l'écran.
-// Elle permet de changer entre la section Œuvres et la section Auteurs.
 struct FloatingTabBarView: View {
 
-    // Onglet actuellement sélectionné.
     @Binding var selectedTab: MainTab
 
     var body: some View {
-        HStack(spacing: 24) {
-
-            Button {
-                selectedTab = .artworks
-            } label: {
-                VStack(spacing: 4) {
-                    Image(systemName: "photo.on.rectangle")
-                    Text("Œuvres")
-                        .font(.caption)
-                }
-            }
-
-            Button {
-                selectedTab = .artists
-            } label: {
-                VStack(spacing: 4) {
-                    Image(systemName: "person.circle")
-                    Text("Auteurs")
-                        .font(.caption)
-                }
-            }
+        HStack(spacing: 8) {
+            tabButton(title: "Œuvres", icon: "photo.on.rectangle", tab: .artworks)
+            tabButton(title: "Auteurs", icon: "person.circle", tab: .artists)
         }
-        .padding(.horizontal, 28)
-        .padding(.vertical, 12)
+        .padding(6)
         .background(.ultraThinMaterial)
         .clipShape(Capsule())
         .shadow(radius: 8)
     }
-}
 
-#Preview {
-    FloatingTabBarView(
-        selectedTab: .constant(.artworks)
-    )
+    private func tabButton(title: String, icon: String, tab: MainTab) -> some View {
+        Button {
+            selectedTab = tab
+        } label: {
+            VStack(spacing: 3) {
+                Image(systemName: icon)
+                    .font(.system(size: 18))
+
+                Text(title)
+                    .font(.caption2)
+                    .fontWeight(.semibold)
+            }
+            .foregroundStyle(selectedTab == tab ? .orange : .black)
+            .frame(width: 82, height: 52)
+            .background(
+                selectedTab == tab
+                ? Color.orange.opacity(0.15)
+                : Color.clear
+            )
+            .clipShape(Capsule())
+        }
+        .buttonStyle(.plain)
+    }
 }

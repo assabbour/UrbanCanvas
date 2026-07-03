@@ -2,10 +2,10 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ArtworkListView()
+        MainView()
     }
 }
 
 #Preview {
-    ContentView()
+    MainView()
 }
