@@ -34,5 +34,16 @@ struct FloatingTabBarViewTests {
         #expect(selectedTab == .artists)
     }
     
+    // Vérifie que l'utilisateur peut changer d'onglet.
+    @Test("La sélection peut changer")
+    func selectedTabCanChange() {
+
+        var selectedTab = MainTab.artworks
+
+        selectedTab = .artists
+
+        #expect(selectedTab == .artists)
+    }
+    
     
 }
