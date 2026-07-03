@@ -1,4 +1,4 @@
-import Foundation
+/*import Foundation
 import SwiftUI
 
 // Carte d’aperçu affichée en bas de la carte.
@@ -46,5 +46,72 @@ struct ArtworkPreviewCardView: View {
         .background(.ultraThinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 28))
         .padding()
+    }
+}
+*/
+
+
+import Foundation
+import SwiftUI
+
+struct ArtworkPreviewCardView: View {
+
+    let artwork: Artwork
+
+    // Action envoyée par la vue parent pour fermer la carte.
+    let onClose: () -> Void
+
+    var body: some View {
+        VStack(spacing: 0) {
+
+            HStack {
+                Button {
+                    onClose()
+                } label: {
+                    Image(systemName: "xmark")
+                        .font(.title3)
+                        .foregroundStyle(.black)
+                        .padding(12)
+                        .background(.thinMaterial)
+                        .clipShape(Circle())
+                }
+                .buttonStyle(.plain)
+
+                Spacer()
+
+                Text(artwork.title)
+                    .font(.headline)
+
+                Spacer()
+
+                Button {
+                    // Navigation détail plus tard.
+                } label: {
+                    Image(systemName: "arrow.right")
+                        .font(.title3)
+                        .foregroundStyle(.white)
+                        .padding(12)
+                        .background(.orange)
+                        .clipShape(Circle())
+                }
+                .buttonStyle(.plain)
+            }
+            .padding(.horizontal)
+            .padding(.vertical, 10)
+
+            Image(artwork.imageName)
+                .resizable()
+                .scaledToFill()
+                .frame(height: 170)
+                .clipped()
+
+            Text(artwork.description)
+                .font(.body)
+                .padding()
+        }
+        .background(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 28))
+        .padding(.horizontal, 16)
+        .padding(.bottom, 20)
     }
 }
