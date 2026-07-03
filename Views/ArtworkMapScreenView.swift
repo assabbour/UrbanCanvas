@@ -1,14 +1,13 @@
-import Foundation
 import SwiftUI
 import MapKit
 
-// Écran qui affiche toutes les œuvres sur une grande carte.
 struct ArtworkMapScreenView: View {
 
-    // Liste des œuvres à afficher sur la carte.
+    @Binding var selectedMode: DisplayMode
+    @Binding var isFilterPresented: Bool
+
     let artworks: [Artwork]
 
-    // Position de départ de la carte centrée sur Marseille.
     @State private var cameraPosition: MapCameraPosition = .region(
         MKCoordinateRegion(
             center: CLLocationCoordinate2D(
@@ -23,23 +22,35 @@ struct ArtworkMapScreenView: View {
     )
 
     var body: some View {
-        Map(position: $cameraPosition) {
+        ZStack(alignment: .top) {
 
-            // Ajoute un marqueur pour chaque œuvre.
-            ForEach(artworks) { artwork in
-                Marker(
-                    artwork.title,
-                    coordinate: CLLocationCoordinate2D(
-                        latitude: artwork.latitude,
-                        longitude: artwork.longitude
+            Map(position: $cameraPosition) {
+                ForEach(artworks) { artwork in
+                    Marker(
+                        artwork.title,
+                        coordinate: CLLocationCoordinate2D(
+                            latitude: artwork.latitude,
+                            longitude: artwork.longitude
+                        )
                     )
-                )
+                }
             }
+            .ignoresSafeArea()
+
+            ArtworkTopBarView(
+                selectedMode: $selectedMode,
+                onFilterTap: {
+                    isFilterPresented.toggle()
+                }
+            )
         }
-        .ignoresSafeArea()
     }
 }
 
 #Preview {
-    ArtworkMapScreenView(artworks: MockData.artworks)
+    ArtworkMapScreenView(
+        selectedMode: .constant(.map),
+        isFilterPresented: .constant(false),
+        artworks: MockData.artworks
+    )
 }

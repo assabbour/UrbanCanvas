@@ -72,3 +72,4 @@ struct ArtworkListView: View {
 #Preview {
     ArtworkListView()
 }
+
