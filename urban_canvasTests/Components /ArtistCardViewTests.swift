@@ -23,4 +23,15 @@ struct ArtistCardViewTests {
 
         #expect(artist.websiteURL.isEmpty == false)
     }
+    
+    // Vérifie que l'URL du site web est valide.
+    @Test("L'URL du site web est valide")
+    func artistWebsiteURLIsValid() {
+
+        let artist = MockData.kan
+
+        let url = URL(string: artist.websiteURL)
+
+        #expect(url != nil)
+    }
 }
