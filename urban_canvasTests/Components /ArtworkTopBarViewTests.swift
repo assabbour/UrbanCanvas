@@ -33,4 +33,15 @@ struct ArtworkTopBarViewTests {
         // On vérifie qu'il existe uniquement deux modes.
         #expect(modes.count == 2)
     }
+    
+    // Vérifie que le mode Liste est disponible.
+    @Test("Le mode Liste est présent")
+    func displayModesShouldContainListMode() {
+
+        // On récupère tous les modes disponibles.
+        let modes = DisplayMode.allCases
+
+        // On vérifie que le mode Liste est présent.
+        #expect(modes.contains(.list))
+    }
 }
