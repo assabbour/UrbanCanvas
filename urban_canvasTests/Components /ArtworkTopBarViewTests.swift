@@ -22,4 +22,15 @@ struct ArtworkTopBarViewTests {
         // On vérifie que le mode est bien Carte.
         #expect(mode == .map)
     }
+    
+    // Vérifie que l'application propose exactement deux modes d'affichage.
+    @Test("La TopBar contient deux modes d'affichage")
+    func topBarShouldContainTwoDisplayModes() {
+
+        // On récupère tous les modes disponibles.
+        let modes = DisplayMode.allCases
+
+        // On vérifie qu'il existe uniquement deux modes.
+        #expect(modes.count == 2)
+    }
 }
