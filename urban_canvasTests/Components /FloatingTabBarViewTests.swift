@@ -45,5 +45,15 @@ struct FloatingTabBarViewTests {
         #expect(selectedTab == .artists)
     }
     
+    // Vérifie que l'utilisateur peut revenir sur l'onglet Œuvres.
+    @Test("Retour sur l'onglet Œuvres")
+    func canReturnToArtworksTab() {
+
+        var selectedTab = MainTab.artists
+
+        selectedTab = .artworks
+
+        #expect(selectedTab == .artworks)
+    }
     
 }
