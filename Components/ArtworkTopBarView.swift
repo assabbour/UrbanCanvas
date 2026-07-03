@@ -23,7 +23,7 @@ struct ArtworkTopBarView: View {
             }
         }
         .padding(.horizontal)
-        .padding(.top, 0)
+        .padding(.horizontal)
     }
 }
 
