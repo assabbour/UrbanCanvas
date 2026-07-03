@@ -16,4 +16,28 @@ struct ArtworkFilterTests {
         // Vérifie que le nombre d'œuvres est identique.
         #expect(filteredArtworks.count == artworks.count)
     }
+    
+    // Vérifie que le filtre Mural retourne uniquement
+    // les œuvres de type Mural.
+    @Test("Le filtre Mural retourne uniquement les œuvres Murales")
+    func filterMuralArtworks() {
+
+        // On récupère toutes les œuvres.
+        let artworks = MockData.artworks
+
+        // On applique le filtre Mural.
+        let filteredArtworks = artworks.filter { artwork in
+            artwork.type == .mural
+        }
+
+        // Vérifie que le résultat n'est pas vide.
+        #expect(filteredArtworks.isEmpty == false)
+
+        // Vérifie que toutes les œuvres sont bien de type Mural.
+        #expect(
+            filteredArtworks.allSatisfy { artwork in
+                artwork.type == .mural
+            }
+        )
+    }
 }
