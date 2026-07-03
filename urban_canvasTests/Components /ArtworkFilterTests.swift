@@ -65,6 +65,32 @@ struct ArtworkFilterTests {
         )
     }
     
+    // Vérifie que le filtre Installation retourne uniquement
+    // les œuvres de type Installation.
+    @Test("Le filtre Installation retourne uniquement les œuvres Installation")
+    func filterInstallationArtworks() {
+
+        // On récupère toutes les œuvres.
+        let artworks = MockData.artworks
+
+        // On applique le filtre Installation.
+        let filteredArtworks = artworks.filter { artwork in
+            artwork.type == .installation
+        }
+
+        // Vérifie que le résultat n'est pas vide.
+        #expect(filteredArtworks.isEmpty == false)
+
+        // Vérifie que toutes les œuvres sont bien de type Installation.
+        #expect(
+            filteredArtworks.allSatisfy { artwork in
+                artwork.type == .installation
+            }
+        )
+    }
+    
+    
+    
     
     
 }
