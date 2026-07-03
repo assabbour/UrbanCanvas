@@ -17,9 +17,7 @@ struct MainView: View {
                 ArtworkListView()
 
             case .artists:
-                Text("Auteurs")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                ArtistListView()
             }
 
             // Barre flottante affichée en bas de l'application.

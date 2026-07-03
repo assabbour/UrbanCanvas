@@ -1,69 +1,51 @@
-
-import Foundation
 import SwiftUI
 
-// Carte réutilisable affichant les informations d'un artiste.
 struct ArtistCardView: View {
 
-    // Artiste affiché.
     let artist: Artist
 
     var body: some View {
+        VStack(spacing: 12) {
 
-        VStack(alignment: .leading, spacing: 12) {
-
-            // Photo de l'artiste.
             Image(artist.imageName)
                 .resizable()
                 .scaledToFill()
-                .frame(height: 180)
-                .frame(maxWidth: .infinity)
-                .clipped()
-                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .frame(width: 72, height: 72)
+                .clipShape(Circle())
+                .padding(.top, 20)
 
-            VStack(alignment: .leading, spacing: 6) {
+            Text(artist.name)
+                .font(.headline)
+                .fontWeight(.bold)
+                .foregroundStyle(.orange)
 
-                Text(artist.name)
-                    .font(.title3)
-                    .fontWeight(.bold)
-
-                Text(artist.city)
-                    .foregroundStyle(.secondary)
-
+            VStack(spacing: 2) {
                 Text("Age : \(artist.age)")
-                    .font(.caption)
-
-                Text("Origin : \(artist.origin)")
-                    .font(.caption)
-
+                Text("Origines : \(artist.origin)")
                 Text("Style : \(artist.style)")
-                    .font(.caption)
             }
+            .font(.caption)
+            .fontWeight(.semibold)
+            .multilineTextAlignment(.center)
 
             Spacer()
 
             Link(
-                "Visit website",
+                "Site web",
                 destination: URL(string: artist.websiteURL)!
             )
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 10)
-            .background(Color.orange)
+            .font(.caption)
+            .fontWeight(.bold)
             .foregroundStyle(.white)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 9)
+            .background(Color.orange)
             .clipShape(Capsule())
-
+            .padding(.horizontal, 14)
+            .padding(.bottom, 14)
         }
-        .padding()
-        .background(Color(.systemBackground))
+        .frame(height: 240)
+        .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 24))
-        .shadow(radius: 6)
     }
-}
-
-#Preview {
-
-    ArtistCardView(
-        artist: MockData.c215
-    )
-
 }
