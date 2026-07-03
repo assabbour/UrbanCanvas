@@ -6,34 +6,61 @@ struct MockData {
 
     // MARK: - Artists
 
+    // MARK: - Artists
+
     static let kan = Artist(
-        name: "KAN",
+        name: "KAN DMV",
         city: "Marseille",
-        bio: "French street artist known for large murals inspired by pop culture."
+        bio: "French street artist known for large murals inspired by pop culture.",
+        age: "49",
+        origin: "France",
+        style: "Pointillisme",
+        imageName: "kan",
+        websiteURL: "https://www.kan-dmv.com"
     )
 
     static let c215 = Artist(
         name: "C215",
         city: "Paris",
-        bio: "French stencil artist internationally recognized for his urban portraits."
+        bio: "French stencil artist internationally recognized for his urban portraits.",
+        age: "52",
+        origin: "France",
+        style: "Stencil",
+        imageName: "c215",
+        websiteURL: "https://c215.fr"
     )
 
     static let mto = Artist(
         name: "MTO",
         city: "Marseille",
-        bio: "Street artist famous for realistic large-scale murals."
+        bio: "Street artist famous for realistic large-scale murals.",
+        age: "46",
+        origin: "France",
+        style: "Mural",
+        imageName: "mto",
+        websiteURL: "https://www.mto-art.com"
     )
 
     static let invader = Artist(
-        name: "Paris",
+        name: "Invader",
         city: "Paris",
-        bio: "French artist famous for his mosaic artworks inspired by retro video games."
+        bio: "French artist famous for his mosaic artworks inspired by retro video games.",
+        age: "56",
+        origin: "France",
+        style: "Mosaïque",
+        imageName: "invader",
+        websiteURL: "https://www.space-invaders.com"
     )
 
     static let jace = Artist(
         name: "JACE",
         city: "Le Havre",
-        bio: "Creator of the famous Gouzous characters found on walls around the world."
+        bio: "Creator of the famous Gouzous characters found on walls around the world.",
+        age: "52",
+        origin: "France",
+        style: "Graffiti",
+        imageName: "jace",
+        websiteURL: "https://www.jacegouzou.net"
     )
 
     // MARK: - Artworks

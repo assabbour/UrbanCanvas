@@ -1,22 +1,17 @@
 import Foundation
 
-// Un artiste ou une artiste.
+// Représente un artiste affiché dans l'application.
 struct Artist: Identifiable {
-    let id: UUID
+    
+    let id = UUID()
     let name: String
     let city: String
     let bio: String
-
-    // L'id est généré automatiquement si on ne le fournit pas.
-    init(
-        id: UUID = UUID(),
-        name: String,
-        city: String,
-        bio: String
-    ) {
-        self.id = id
-        self.name = name
-        self.city = city
-        self.bio = bio
-    }
+    
+    // Informations utilisées dans l'écran Profil / Auteurs.
+    let age: String
+    let origin: String
+    let style: String
+    let imageName: String
+    let websiteURL: String
 }
