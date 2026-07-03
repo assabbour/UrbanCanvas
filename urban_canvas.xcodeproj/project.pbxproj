@@ -29,6 +29,13 @@
 			);
 			target = F1CFF3962FF6711500357C40 /* urban_canvasTests */;
 		};
+		F13FAB1E2FF7FAE1007409E5 /* Exceptions for "Views" folder in "urban_canvasTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ArtistCardView.swift,
+			);
+			target = F1CFF3962FF6711500357C40 /* urban_canvasTests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -57,6 +64,9 @@
 		};
 		F1CC13D62FF54699004903B8 /* Views */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F13FAB1E2FF7FAE1007409E5 /* Exceptions for "Views" folder in "urban_canvasTests" target */,
+			);
 			path = Views;
 			sourceTree = "<group>";
 		};
