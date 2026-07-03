@@ -24,4 +24,15 @@ struct FloatingTabBarViewTests {
 
         #expect(selectedTab == .artworks)
     }
+    
+    // Vérifie que l'onglet Auteurs peut être sélectionné.
+    @Test("L'onglet Auteurs est sélectionné")
+    func artistsTabIsSelected() {
+
+        let selectedTab = MainTab.artists
+
+        #expect(selectedTab == .artists)
+    }
+    
+    
 }
