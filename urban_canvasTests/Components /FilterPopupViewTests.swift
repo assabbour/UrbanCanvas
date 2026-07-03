@@ -6,27 +6,36 @@ struct FilterPopupViewTests {
     @Test("La popup de filtre peut être créée")
     func filterPopupCanBeCreated() {
 
-        let view = FilterPopupView {}
+        let view = FilterPopupView(
+            selectedArtType: nil,
+            onSelect: { _ in },
+            onClose: {}
+        )
 
-        #expect(view.onClose != nil)
+        #expect(view.selectedArtType == nil)
     }
-    
-    
-    @Test("La popup possède une action de fermeture")
-    func filterPopupHasCloseAction() {
 
-        let view = FilterPopupView {}
+    @Test("La popup peut recevoir un filtre Mural")
+    func filterPopupCanReceiveMuralFilter() {
 
-        #expect(view.onClose != nil)
+        let view = FilterPopupView(
+            selectedArtType: .mural,
+            onSelect: { _ in },
+            onClose: {}
+        )
+
+        #expect(view.selectedArtType == .mural)
     }
-    
-    @Test("La popup peut être créée plusieurs fois")
-    func filterPopupCanBeCreatedMultipleTimes() {
 
-        let popup1 = FilterPopupView {}
-        let popup2 = FilterPopupView {}
+    @Test("La popup peut recevoir un filtre Graffiti")
+    func filterPopupCanReceiveGraffitiFilter() {
 
-        #expect(popup1.onClose != nil)
-        #expect(popup2.onClose != nil)
+        let view = FilterPopupView(
+            selectedArtType: .graffiti,
+            onSelect: { _ in },
+            onClose: {}
+        )
+
+        #expect(view.selectedArtType == .graffiti)
     }
 }
