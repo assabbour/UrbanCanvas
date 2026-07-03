@@ -1,9 +1,9 @@
 import SwiftUI
 
-// Popup affichée au-dessus de la liste.
-// Elle contient les choix de filtres.
 struct FilterPopupView: View {
 
+    let selectedArtType: ArtType?
+    let onSelect: (ArtType?) -> Void
     let onClose: () -> Void
 
     var body: some View {
@@ -16,23 +16,28 @@ struct FilterPopupView: View {
                 .font(.caption)
                 .foregroundStyle(.gray)
 
-            FilterOptionButtonView(title: "Tous", isSelected: true) {
+            FilterOptionButtonView(title: "Tous", isSelected: selectedArtType == nil) {
+                onSelect(nil)
                 onClose()
             }
 
-            FilterOptionButtonView(title: "Mural", isSelected: false) {
+            FilterOptionButtonView(title: "Mural", isSelected: selectedArtType == .mural) {
+                onSelect(.mural)
                 onClose()
             }
 
-            FilterOptionButtonView(title: "Graffiti", isSelected: false) {
+            FilterOptionButtonView(title: "Graffiti", isSelected: selectedArtType == .graffiti) {
+                onSelect(.graffiti)
                 onClose()
             }
 
-            FilterOptionButtonView(title: "Collage", isSelected: false) {
+            FilterOptionButtonView(title: "Collage", isSelected: selectedArtType == .collage) {
+                onSelect(.collage)
                 onClose()
             }
 
-            FilterOptionButtonView(title: "Installation", isSelected: false) {
+            FilterOptionButtonView(title: "Installation", isSelected: selectedArtType == .installation) {
+                onSelect(.installation)
                 onClose()
             }
         }
@@ -45,5 +50,9 @@ struct FilterPopupView: View {
 }
 
 #Preview {
-    FilterPopupView {}
+    FilterPopupView(
+        selectedArtType: nil,
+        onSelect: { _ in },
+        onClose: {}
+    )
 }
