@@ -54,4 +54,42 @@ struct ArtistCardViewTests {
         )
     }
     
+    // Vérifie que tous les artistes possèdent une URL valide.
+    @Test("Tous les artistes possèdent une URL valide")
+    func allArtistsHaveValidWebsiteURL() {
+
+        let artists = [
+            MockData.kan,
+            MockData.c215,
+            MockData.mto,
+            MockData.invader,
+            MockData.jace
+        ]
+
+        #expect(
+            artists.allSatisfy { artist in
+                URL(string: artist.websiteURL) != nil
+            }
+        )
+    }
+    
+    // Vérifie que toutes les URLs commencent par https.
+    @Test("Toutes les URLs commencent par HTTPS")
+    func allArtistWebsiteURLsUseHTTPS() {
+
+        let artists = [
+            MockData.kan,
+            MockData.c215,
+            MockData.mto,
+            MockData.invader,
+            MockData.jace
+        ]
+
+        #expect(
+            artists.allSatisfy { artist in
+                artist.websiteURL.hasPrefix("https://")
+            }
+        )
+    }
+    
 }
