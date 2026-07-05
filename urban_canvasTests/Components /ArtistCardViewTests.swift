@@ -34,4 +34,24 @@ struct ArtistCardViewTests {
 
         #expect(url != nil)
     }
+    
+    // Vérifie que tous les artistes possèdent une image.
+    @Test("Tous les artistes possèdent une image")
+    func allArtistsHaveImage() {
+
+        let artists = [
+            MockData.kan,
+            MockData.c215,
+            MockData.mto,
+            MockData.invader,
+            MockData.jace
+        ]
+
+        #expect(
+            artists.allSatisfy { artist in
+                !artist.imageName.isEmpty
+            }
+        )
+    }
+    
 }
