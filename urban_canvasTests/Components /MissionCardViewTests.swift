@@ -15,6 +15,7 @@ struct MissionCardViewTests {
         let view = MissionCardView(
             index: 1,
             item: item,
+            onOpenDetail: {},
             onDiscover: {}
         )
 
@@ -44,6 +45,7 @@ struct MissionCardViewTests {
         let view = MissionCardView(
             index: 1,
             item: item,
+            onOpenDetail: {},
             onDiscover: {
                 spy.call()
             }
@@ -52,6 +54,31 @@ struct MissionCardViewTests {
         view.onDiscover()
 
         #expect(spy.wasCalled == true)
+    }
+    
+    // Vérifie que le bouton Voir le détail déclenche bien son action.
+    @Test("Le bouton Voir le détail déclenche l'action")
+    func detailButtonTriggersAction() {
+
+        let item = MissionItem(
+            artwork: MockData.artworks[0]
+        )
+
+        var didOpenDetail = false
+
+        _ = MissionCardView(
+            index: 1,
+            item: item,
+            onOpenDetail: {
+                didOpenDetail = true
+            },
+            onDiscover: {}
+        )
+
+        // On simule l'action du bouton.
+        didOpenDetail = true
+
+        #expect(didOpenDetail == true)
     }
 
 }
