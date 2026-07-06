@@ -14,12 +14,15 @@ struct MainView: View {
             switch selectedTab {
 
             case .artworks:
+                // Affiche la liste des œuvres.
                 ArtworkListView()
 
+            case .mission:
+                // Affiche l'écran mission.
+                MissionView()
+
             case .artists:
-                ArtistListView()
-                
-            case .artists:
+                // Affiche la liste des artistes.
                 ArtistListView()
             }
 
