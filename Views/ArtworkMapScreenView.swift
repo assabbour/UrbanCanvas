@@ -1,9 +1,13 @@
 import SwiftUI
 import MapKit
 
+// Écran affichant toutes les œuvres sur une carte.
 struct ArtworkMapScreenView: View {
 
+    // Mode actuellement sélectionné (Liste ou Carte).
     @Binding var selectedMode: DisplayMode
+
+    // Permet d'afficher ou masquer la popup des filtres.
     @Binding var isFilterPresented: Bool
 
     // Liste des œuvres affichées sur la carte.
@@ -12,7 +16,10 @@ struct ArtworkMapScreenView: View {
     // Œuvre actuellement sélectionnée.
     @State private var selectedArtwork: Artwork?
 
-    // Position initiale de la carte.
+    // Œuvre utilisée pour ouvrir la vue détail.
+    @State private var artworkToShowDetail: Artwork?
+
+    // Position initiale de la carte (Marseille).
     @State private var cameraPosition: MapCameraPosition = .region(
         MKCoordinateRegion(
             center: CLLocationCoordinate2D(
@@ -33,6 +40,7 @@ struct ArtworkMapScreenView: View {
             // Carte interactive.
             Map(position: $cameraPosition) {
 
+                // Création d'un marqueur pour chaque œuvre.
                 ForEach(artworks) { artwork in
 
                     Annotation(
@@ -43,18 +51,13 @@ struct ArtworkMapScreenView: View {
                         )
                     ) {
 
-                        Button {
+                        // Marqueur réutilisable.
+                        ArtworkMapMarkerView()
 
-                            // Sélection de l'œuvre.
-                            selectedArtwork = artwork
-
-                        } label: {
-
-                            // Composant réutilisable représentant un marqueur.
-                            ArtworkMapMarkerView()
-
-                        }
-                        .buttonStyle(.plain)
+                            // Sélection de l'œuvre au toucher.
+                            .onTapGesture {
+                                selectedArtwork = artwork
+                            }
 
                     }
 
@@ -73,20 +76,48 @@ struct ArtworkMapScreenView: View {
             .zIndex(2)
 
         }
+
+        // Carte d'aperçu affichée lorsqu'une œuvre est sélectionnée.
         .overlay(alignment: .bottom) {
 
-            // Carte d'aperçu affichée uniquement
-            // lorsqu'une œuvre est sélectionnée.
             if let selectedArtwork {
 
                 ArtworkPreviewCardView(
+
                     artwork: selectedArtwork,
+
+                    // Ferme l'aperçu.
                     onClose: {
+                        self.selectedArtwork = nil
+                    },
+
+                    // Ouvre la fiche détail.
+                    onOpenDetail: {
+
+                        // Enregistre l'œuvre à afficher.
+                        self.artworkToShowDetail = selectedArtwork
+
+                        // Ferme l'aperçu.
                         self.selectedArtwork = nil
                     }
                 )
 
+                // Laisse de la place pour la barre d'onglets.
+                .padding(.bottom, 90)
+
+                // Place la carte au-dessus de la Map.
+                .zIndex(10)
+
             }
+
+        }
+
+        // Navigation vers la fiche détail.
+        .navigationDestination(item: $artworkToShowDetail) { artwork in
+
+            ArtworkDetailView(
+                artwork: artwork
+            )
 
         }
 
@@ -96,10 +127,14 @@ struct ArtworkMapScreenView: View {
 
 #Preview {
 
-    ArtworkMapScreenView(
-        selectedMode: .constant(.map),
-        isFilterPresented: .constant(false),
-        artworks: MockData.artworks
-    )
+    NavigationStack {
+
+        ArtworkMapScreenView(
+            selectedMode: .constant(.map),
+            isFilterPresented: .constant(false),
+            artworks: MockData.artworks
+        )
+
+    }
 
 }

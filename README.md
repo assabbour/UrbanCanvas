@@ -1,68 +1,83 @@
-# UrbanCanvas
 
-UrbanCanvas est une application iPhone développée en SwiftUI.
 
-## Objectif
-
-Afficher une liste d'œuvres de Street Art et consulter le détail de chaque œuvre.
-
-## Version V1
-
-- Liste des œuvres
-- Vue détail d'une œuvre
-
-## Contraintes techniques
-
-- iPhone uniquement
-- SwiftUI
-- Orientation portrait
-- Données statiques codées en dur
-- Aucune API distante
-- Aucune base de données locale
-
+## UrbanCanvas
+UrbanCanvas est une application permet de découvrir des œuvres de Street Art, leurs artistes et de réaliser des missions de découverte à partir de données entièrement mockées.
+---------------------------------------------------------------------------------
+## Objectifs
+- Découvrir des œuvres de Street Art.
+- Consulter les informations détaillées d'une œuvre.
+- Filtrer les œuvres par type d'art.
+- Explorer les œuvres sur une carte interactive.
+- Découvrir les artistes et accéder à leur site web.
+- Développer une application SwiftUI modulaire, réutilisable et testée.
+---------------------------------------------------------------------------------
+## Fonctionnalités
+###### Version 1 — Référencement et consultation
+- Affichage de la liste des œuvres de Street Art.
+- Consultation de la fiche détaillée d'une œuvre.
+- Navigation entre la liste et le détail.
+###### Version 2 — Tri et filtrage
+- Bouton d'ouverture des filtres.
+- Filtrage dynamique des œuvres par type d'art.
+- Popup de sélection des filtres.
+- Composants SwiftUI réutilisables.
+- Tests unitaires des composants et de la logique de filtrage.
+###### Version 3 — Exploration cartographique
+- Bascule entre le mode Liste et le mode Carte.
+- Affichage des œuvres sur une carte avec MapKit.
+- Marqueurs interactifs des œuvres.
+- Aperçu d'une œuvre directement sur la carte.
+- Navigation vers la fiche détail depuis la carte.
+###### Version 4 — Découverte des artistes
+- Navigation principale avec TabView.
+- Onglet dédié aux artistes.
+- Affichage des artistes sous forme de cartes.
+- Présentation du nom, de la photo, de l'âge, des origines et du style.
+- Ouverture du site web officiel d'un artiste.
+- Tests unitaires des composants et des modèles.
+---------------------------------------------------------------------------------
 ## Branches Git
-
 - main : version stable
 - dev : développement
-
-
-
-
+---------------------------------------------------------------------------------
+## Architecture
 
 UrbanCanvas
 ├── App
-│   ├── UrbanCanvasApp.swift → point d’entrée de l’application
-│   ├── ContentView.swift → charge l’écran principal ArtworkListView
-│   └── Assets.xcassets → images, icône, couleurs, ressources graphiques
-│
-├── Models
-│   ├── Artwork.swift → modèle principal d’une œuvre
-│   │   └── utilisé par MockData, ArtworkListView, ArtworkDetailView
-│   ├── Artist.swift → modèle représentant un artiste
-│   │   └── utilisé dans Artwork
-│   └── ArtType.swift → types d’œuvres : mural, graffiti, collage, installation
-│       └── utilisé dans Artwork et dans les filtres
-│
-├── Data
-│   └── MockData.swift → données statiques de l’application
-│       └── crée les artistes et les œuvres utilisés par les vues
-│
-├── Views
-│   ├── ArtworkListView.swift → écran liste des œuvres
-│   │   └── utilise MockData, ArtworkRowView, FilterButtonView, FilterPopupView
-│   └── ArtworkDetailView.swift → écran détail d’une œuvre
-│       └── utilise DetailHeaderImageView et ArtworkInfoRowView
-│
+│   ├── ContentView.swift → lance MainView
+│   ├── urban_canvasApp.swift → point d’entrée de l’app
+│   └── Assets.xcassets → images locales
+
 ├── Components
-│   ├── ArtworkRowView.swift → ligne d’œuvre dans la liste
-│   ├── DetailHeaderImageView.swift → grande image du détail
-│   ├── ArtworkInfoRowView.swift → ligne d’information “Titre : Valeur”
-│   ├── FilterButtonView.swift → bouton d’ouverture des filtres
-│   ├── FilterPopupView.swift → popup contenant les filtres
-│   └── FilterOptionButtonView.swift → bouton d’option dans la popup
-│
+│   → composants réutilisables SwiftUI
+│   ├── ArtistCardView.swift → carte auteur + bouton site web
+│   ├── ArtworkRowView.swift → ligne d’œuvre
+│   ├── ArtworkPreviewCardView.swift → aperçu sur la carte
+│   ├── ArtworkMapMarkerView.swift → marqueur de carte
+│   ├── ArtworkTopBarView.swift → barre Liste / Carte + filtre
+│   ├── FilterPopupView.swift → popup des filtres
+│   ├── FilterOptionButtonView.swift → bouton de filtre
+│   └── FloatingTabBarView.swift → navigation Œuvres / Auteurs
+
+├── Data
+│   └── MockData.swift → données statiques : œuvres + artistes
+
+├── Models
+│   ├── Artist.swift → modèle auteur
+│   ├── Artwork.swift → modèle œuvre
+│   ├── ArtType.swift → type d’art
+│   ├── DisplayMode.swift → mode Liste / Carte
+│   └── MainTab.swift → onglet principal
+
+├── Views
+│   ├── MainView.swift → écran racine avec FloatingTabBar
+│   ├── ArtworkListView.swift → liste + filtre + carte
+│   ├── ArtworkDetailView.swift → détail d’une œuvre
+│   ├── ArtworkMapScreenView.swift → carte interactive
+│   └── ArtistListView.swift → grille des auteurs
+
 └── urban_canvasTests
-    ├── Models → tests des modèles : Artwork, Artist, ArtType
-    ├── Data → tests de MockData et du filtrage
-    ├── Components → tests des composants réutilisables
-    └── Views → tests des écrans principaux
+    ├── Components → tests des composants
+    ├── Data → tests MockData / filtres
+    ├── Models → tests des modèles
+    └── Views → tests des écrans

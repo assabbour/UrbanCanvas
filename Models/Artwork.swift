@@ -1,7 +1,7 @@
 import Foundation
 
 // Représente une œuvre de street art affichée dans l'application.
-struct Artwork: Identifiable {
+struct Artwork: Identifiable, Hashable  {
     let id: UUID
     let title: String
     let artist: Artist

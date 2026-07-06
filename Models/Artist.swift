@@ -1,7 +1,7 @@
 import Foundation
 
 // Représente un artiste affiché dans l'application.
-struct Artist: Identifiable {
+struct Artist: Identifiable , Hashable {
     
     let id = UUID()
     let name: String
