@@ -18,6 +18,9 @@ struct MainView: View {
 
             case .artists:
                 ArtistListView()
+                
+            case .artists:
+                ArtistListView()
             }
 
             // Barre flottante affichée en bas de l'application.
