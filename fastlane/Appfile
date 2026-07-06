@@ -1,0 +1,8 @@
+# Identifiant unique de l'application iOS.
+app_identifier("com.assabbour.urbanCanvas")
+
+# Email Apple utilisé pour App Store Connect.
+apple_id("assabbour@hotmail.com")
+
+# ID de l'équipe Apple Developer.
+team_id("A1B2C3D4E5")
