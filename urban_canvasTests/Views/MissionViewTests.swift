@@ -116,4 +116,12 @@ struct MissionViewTests {
         #expect(discoveredCount == 0)
     }
     
+    // Vérifie qu'une nouvelle mission contient des œuvres.
+    @Test("Une nouvelle mission contient des œuvres")
+    func newMissionContainsArtworks() {
+
+        let newMission = MissionGenerator.generateMission()
+
+        #expect(newMission.isEmpty == false)
+    }
 }
