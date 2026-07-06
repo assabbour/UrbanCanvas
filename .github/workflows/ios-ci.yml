@@ -1,30 +1,43 @@
+# Nom du workflow affiché dans l'onglet Actions de GitHub.
 name: iOS CI
 
+# Déclencheurs du workflow.
 on:
+  # Le workflow se lance à chaque push sur dev ou main.
   push:
     branches:
       - dev
       - main
+
+  # Le workflow se lance aussi lorsqu'une Pull Request vise la branche main.
   pull_request:
     branches:
       - main
 
+# Liste des jobs exécutés par GitHub Actions.
 jobs:
+  # Job principal : compiler le projet et lancer les tests.
   build-and-test:
+
+    # Utilise une machine macOS fournie par GitHub.
+    # Obligatoire pour compiler une application iOS avec Xcode.
     runs-on: macos-latest
 
+    # Étapes exécutées dans ce job.
     steps:
+
+      # Récupère le code du projet depuis le repository GitHub.
       - name: Checkout project
         uses: actions/checkout@v4
 
+      # Affiche la version de Xcode utilisée par le runner.
+      # Utile pour vérifier l'environnement de build.
       - name: Show Xcode version
         run: xcodebuild -version
 
+      # Lance les tests unitaires du projet iOS.
       - name: Run tests
         run: |
           xcodebuild test \
             -scheme urban_canvas \
             -destination 'platform=iOS Simulator,name=iPhone 16'
-
-
-
