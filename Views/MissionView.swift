@@ -38,7 +38,23 @@ struct MissionView: View {
                     .fontWeight(.bold)
                     .foregroundStyle(.orange)
                     .padding(.horizontal)
+                // Bouton permettant de générer une nouvelle mission.
+                Button {
 
+                    // Génère une nouvelle mission.
+                    missionItems = MissionGenerator.generateMission()
+
+                } label: {
+
+                    Text("Nouvelle mission")
+                        .fontWeight(.bold)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                        .background(Color.orange)
+                        .foregroundStyle(.white)
+                        .clipShape(Capsule())
+
+                }
                 // Message affiché seulement quand toute la mission est terminée.
                 if discoveredCount == missionItems.count {
                     Text("Mission terminée ! Vous avez découvert \(missionItems.count) œuvres urbaines.")
