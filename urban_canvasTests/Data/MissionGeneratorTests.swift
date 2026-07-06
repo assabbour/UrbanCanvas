@@ -63,5 +63,17 @@ struct MissionGeneratorTests {
         #expect(mission.count <= 5)
     }
     
+    // Vérifie qu'un artiste n'apparaît pas deux fois dans une mission.
+    @Test("La mission ne répète pas les artistes")
+    func missionDoesNotRepeatArtists() {
+
+        let mission = MissionGenerator.generateMission()
+
+        let artistNames = mission.map { item in
+            item.artwork.artist.name
+        }
+
+        #expect(Set(artistNames).count == artistNames.count)
+    }
     
 }
