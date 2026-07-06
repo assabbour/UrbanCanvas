@@ -21,4 +21,13 @@ struct MissionViewTests {
 
         #expect(mission.isEmpty == false)
     }
+    
+    // Vérifie que la mission contient au moins 3 œuvres.
+    @Test("La mission contient au moins 3 œuvres")
+    func missionContainsAtLeastThreeItems() {
+
+        let mission = MissionGenerator.generateMission()
+
+        #expect(mission.count >= 3)
+    }
 }
