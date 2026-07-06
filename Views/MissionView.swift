@@ -7,6 +7,107 @@ struct MissionView: View {
     // Mission générée automatiquement depuis les données mockées.
     @State private var missionItems: [MissionItem] = MissionGenerator.generateMission()
 
+    // Œuvre sélectionnée pour ouvrir la fiche détail.
+    @State private var artworkToShowDetail: Artwork?
+
+    // Nombre d'œuvres découvertes dans la mission.
+    private var discoveredCount: Int {
+        missionItems.filter { item in
+            item.isDiscovered
+        }.count
+    }
+
+    var body: some View {
+        NavigationStack {
+
+            VStack(alignment: .leading, spacing: 12) {
+
+                Text("Mission")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.horizontal)
+
+                Text("Découvrez plusieurs œuvres de Street Art sélectionnées automatiquement.")
+                    .font(.body)
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal)
+
+                Text("\(discoveredCount) œuvres découvertes sur \(missionItems.count)")
+                    .font(.caption)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.orange)
+                    .padding(.horizontal)
+
+                Button {
+                    missionItems = MissionGenerator.generateMission()
+                } label: {
+                    Text("Nouvelle mission")
+                        .fontWeight(.bold)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                        .background(Color.orange)
+                        .foregroundStyle(.white)
+                        .clipShape(Capsule())
+                }
+                .padding(.horizontal)
+
+                if discoveredCount == missionItems.count {
+                    Text("Mission terminée ! Vous avez découvert \(missionItems.count) œuvres urbaines.")
+                        .font(.subheadline)
+                        .fontWeight(.bold)
+                        .foregroundStyle(.green)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.green.opacity(0.12))
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .padding(.horizontal)
+                }
+
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 20) {
+
+                        ForEach(Array(missionItems.enumerated()), id: \.element.id) { index, item in
+
+                            MissionCardView(
+                                index: index + 1,
+                                item: item,
+                                onOpenDetail: {
+                                    artworkToShowDetail = item.artwork
+                                },
+                                onDiscover: {
+                                    missionItems[index].isDiscovered = true
+                                }
+                            )
+                        }
+                    }
+                    .padding(.horizontal)
+                    .padding(.bottom, 220)
+                }
+            }
+            .padding(.top)
+            .background(Color(.systemGroupedBackground))
+            .navigationDestination(item: $artworkToShowDetail) { artwork in
+                ArtworkDetailView(artwork: artwork)
+            }
+        }
+    }
+}
+
+#Preview {
+    MissionView()
+}
+
+
+
+/*import Foundation
+import SwiftUI
+
+// Écran principal de la mission de découverte.
+struct MissionView: View {
+    
+    // Mission générée automatiquement depuis les données mockées.
+    @State private var missionItems: [MissionItem] = MissionGenerator.generateMission()
+
     // Nombre d'œuvres découvertes dans la mission.
     private var discoveredCount: Int {
         missionItems.filter { item in
@@ -97,3 +198,4 @@ struct MissionView: View {
 #Preview {
     MissionView()
 }
+*/

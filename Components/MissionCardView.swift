@@ -1,11 +1,20 @@
-/*import Foundation
+
 import SwiftUI
 
-// Carte affichant une œuvre proposée dans une mission.
+// Carte utilisée pour afficher une œuvre dans l'écran Mission.
 struct MissionCardView: View {
 
+    // Numéro de l'œuvre dans la mission.
     let index: Int
+
+    // Élément de mission affiché dans la carte.
     let item: MissionItem
+
+    // Action appelée pour ouvrir la fiche détail de l'œuvre.
+    let onOpenDetail: () -> Void
+
+    // Action appelée pour marquer l'œuvre comme découverte.
+    let onDiscover: () -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -31,6 +40,36 @@ struct MissionCardView: View {
 
             Text(item.artwork.location)
                 .font(.caption)
+
+            // Bouton pour ouvrir la fiche détail complète.
+            Button {
+                onOpenDetail()
+            } label: {
+                Text("Voir le détail")
+                    .font(.caption)
+                    .fontWeight(.bold)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 10)
+                    .background(Color.black.opacity(0.08))
+                    .foregroundStyle(.black)
+                    .clipShape(Capsule())
+            }
+            .buttonStyle(.plain)
+
+            // Bouton pour marquer l'œuvre comme découverte.
+            Button {
+                onDiscover()
+            } label: {
+                Text(item.isDiscovered ? "Découverte ✓" : "Découvrir")
+                    .font(.caption)
+                    .fontWeight(.bold)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 10)
+                    .background(item.isDiscovered ? Color.green : Color.orange)
+                    .foregroundStyle(.white)
+                    .clipShape(Capsule())
+            }
+            .buttonStyle(.plain)
         }
         .padding()
         .background(Color.white)
@@ -38,8 +77,7 @@ struct MissionCardView: View {
         .shadow(radius: 5)
     }
 }
-*/
-import SwiftUI
+/*import SwiftUI
 
 // Carte utilisée pour afficher une œuvre dans l'écran Mission.
 struct MissionCardView: View {
@@ -159,3 +197,4 @@ struct MissionCardView: View {
         .shadow(radius: 5)
     }
 }
+*/
