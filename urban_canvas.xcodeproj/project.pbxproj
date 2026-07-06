@@ -21,6 +21,16 @@
 		F1CFF3972FF6711500357C40 /* urban_canvasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = urban_canvasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F13FAB9A2FFB93FC007409E5 /* Exceptions for "Components" folder in "urban_canvasTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				MissionCardView.swift,
+			);
+			target = F1CFF3962FF6711500357C40 /* urban_canvasTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F1CC13752FF52AEB004903B8 /* Models */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -34,6 +44,9 @@
 		};
 		F1CC137B2FF52B61004903B8 /* Components */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F13FAB9A2FFB93FC007409E5 /* Exceptions for "Components" folder in "urban_canvasTests" target */,
+			);
 			path = Components;
 			sourceTree = "<group>";
 		};
