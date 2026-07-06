@@ -8,6 +8,9 @@ struct MainView: View {
     @State private var selectedTab: MainTab = .artworks
 
     var body: some View {
+
+        // ZStack permet d'afficher le contenu principal
+        // ainsi que la barre de navigation flottante.
         ZStack {
 
             // Contenu principal selon l'onglet sélectionné.
@@ -18,21 +21,22 @@ struct MainView: View {
                 ArtworkListView()
 
             case .mission:
-                // Affiche l'écran mission.
+                // Affiche l'écran des missions.
                 MissionView()
 
             case .artists:
                 // Affiche la liste des artistes.
                 ArtistListView()
             }
+        }
 
-            // Barre flottante affichée en bas de l'application.
-            VStack {
-                Spacer()
+        // La barre flottante est affichée en superposition.
+        // overlay évite que la vue principale soit recouverte
+        // par un VStack occupant toute la hauteur de l'écran.
+        .overlay(alignment: .bottom) {
 
-                FloatingTabBarView(selectedTab: $selectedTab)
-                    .padding(.bottom, 16)
-            }
+            FloatingTabBarView(selectedTab: $selectedTab)
+                .padding(.bottom, 16)
         }
     }
 }
@@ -40,4 +44,3 @@ struct MainView: View {
 #Preview {
     MainView()
 }
-

@@ -66,4 +66,17 @@ struct MissionViewTests {
             }
         )
     }
+    
+    
+    @Test("La progression démarre à zéro")
+    func missionProgressStartsAtZero() {
+
+        let mission = MissionGenerator.generateMission()
+
+        let discoveredCount = mission.filter { item in
+            item.isDiscovered
+        }.count
+
+        #expect(discoveredCount == 0)
+    }
 }
