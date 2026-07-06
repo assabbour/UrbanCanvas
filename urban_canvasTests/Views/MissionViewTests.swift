@@ -12,4 +12,13 @@ struct MissionViewTests {
 
         #expect(view != nil)
     }
+    
+    // Vérifie qu'une mission est générée.
+    @Test("Une mission est générée")
+    func missionIsGenerated() {
+
+        let mission = MissionGenerator.generateMission()
+
+        #expect(mission.isEmpty == false)
+    }
 }
