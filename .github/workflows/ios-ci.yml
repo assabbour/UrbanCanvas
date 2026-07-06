@@ -1,0 +1,30 @@
+name: iOS CI
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      - name: Show Xcode version
+        run: xcodebuild -version
+
+      - name: Run tests
+        run: |
+          xcodebuild test \
+            -scheme urban_canvas \
+            -destination 'platform=iOS Simulator,name=iPhone 16'
+
+
+
