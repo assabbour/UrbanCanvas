@@ -16,56 +16,63 @@ struct MissionView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
 
-                    Text("Mission")
-                        .font(.largeTitle)
+            VStack(alignment: .leading, spacing: 12) {
+
+                // Titre de l'écran Mission.
+                Text("Mission")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.horizontal)
+
+                // Texte d'explication.
+                Text("Découvrez plusieurs œuvres de Street Art sélectionnées automatiquement.")
+                    .font(.body)
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal)
+
+                // Progression de la mission.
+                // Cette partie reste visible en haut car elle est hors du ScrollView.
+                Text("\(discoveredCount) œuvres découvertes sur \(missionItems.count)")
+                    .font(.caption)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.orange)
+                    .padding(.horizontal)
+
+                // Message affiché seulement quand toute la mission est terminée.
+                if discoveredCount == missionItems.count {
+                    Text("Mission terminée ! Vous avez découvert \(missionItems.count) œuvres urbaines.")
+                        .font(.subheadline)
                         .fontWeight(.bold)
-
-                    Text("Découvrez plusieurs œuvres de Street Art sélectionnées automatiquement.")
-                        .font(.body)
-                        .foregroundStyle(.secondary)
-
-                    // Progression de la mission.
-                    Text("\(discoveredCount) œuvres découvertes sur \(missionItems.count)")
-                        .font(.headline)
-                        .foregroundStyle(.orange)
-                    // Si toutes les œuvres sont découvertes,
-                    // on affiche un message de réussite.
-                    if discoveredCount == missionItems.count {
-
-                        VStack(spacing: 10) {
-
-                            Text("Mission terminée !")
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .foregroundStyle(.green)
-
-                            Text("Vous avez découvert \(missionItems.count) œuvres urbaines.")
-                                .font(.body)
-                                .foregroundStyle(.secondary)
-
-                        }
+                        .foregroundStyle(.green)
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(Color.green.opacity(0.12))
-                        .clipShape(RoundedRectangle(cornerRadius: 18))
-                    }
-
-                    ForEach(Array(missionItems.enumerated()), id: \.element.id) { index, item in
-                        MissionCardView(
-                            index: index + 1,
-                            item: item,
-                            onDiscover: {
-                                missionItems[index].isDiscovered = true
-                            }
-                        )
-                    }
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .padding(.horizontal)
                 }
-                .padding()
-                .padding(.bottom, 90)
+
+                // Seules les cartes sont dans le ScrollView.
+                ScrollView {
+
+                    VStack(alignment: .leading, spacing: 20) {
+
+                        ForEach(Array(missionItems.enumerated()), id: \.element.id) { index, item in
+
+                            MissionCardView(
+                                index: index + 1,
+                                item: item,
+                                onDiscover: {
+                                    missionItems[index].isDiscovered = true
+                                }
+                            )
+                        }
+                    }
+                    .padding(.horizontal)
+                    .padding(.bottom, 90)
+                }
             }
+            .padding(.top)
             .background(Color(.systemGroupedBackground))
         }
     }
