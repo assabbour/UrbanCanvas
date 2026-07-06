@@ -14,9 +14,11 @@ struct MissionCardViewTests {
 
         let view = MissionCardView(
             index: 1,
-            item: item
+            item: item,
+            onDiscover: {}
         )
 
         #expect(view.index == 1)
     }
+    
 }
