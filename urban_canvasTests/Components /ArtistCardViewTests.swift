@@ -113,7 +113,9 @@ struct ArtistCardViewTests {
 
         let card = MissionCardView(
             index: 3,
+            
             item: item,
+            onOpenDetail: {},
             onDiscover: {}
         )
 

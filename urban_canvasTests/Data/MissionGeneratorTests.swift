@@ -38,4 +38,19 @@ struct MissionGeneratorTests {
         #expect(Set(artistNames).count == artistNames.count)
     }
     
+    // Vérifie que la mission contient au moins deux types d'art différents.
+    @Test("La mission contient au moins deux types d'art")
+    func missionContainsAtLeastTwoArtTypes() {
+
+        let mission = MissionGenerator.generateMission()
+
+        let types = Set(
+            mission.map { item in
+                item.artwork.type
+            }
+        )
+
+        #expect(types.count >= 2)
+    }
+    
 }
