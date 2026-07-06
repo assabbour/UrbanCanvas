@@ -30,4 +30,13 @@ struct MissionViewTests {
 
         #expect(mission.count >= 3)
     }
+    
+    // Vérifie que la mission contient maximum 5 œuvres.
+    @Test("La mission contient maximum 5 œuvres")
+    func missionContainsMaximumFiveItems() {
+
+        let mission = MissionGenerator.generateMission()
+
+        #expect(mission.count <= 5)
+    }
 }
