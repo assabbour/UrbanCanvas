@@ -53,6 +53,15 @@ struct MissionGeneratorTests {
         #expect(types.count >= 2)
     }
     
+    // Vérifie que la mission contient entre 3 et 5 œuvres.
+    @Test("La mission contient entre 3 et 5 œuvres")
+    func missionContainsBetweenThreeAndFiveArtworks() {
+
+        let mission = MissionGenerator.generateMission()
+
+        #expect(mission.count >= 3)
+        #expect(mission.count <= 5)
+    }
     
     
 }
