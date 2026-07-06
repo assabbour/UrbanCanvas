@@ -79,4 +79,27 @@ struct MissionViewTests {
 
         #expect(discoveredCount == 0)
     }
+    
+    // Vérifie que la progression compte les œuvres découvertes.
+    @Test("La progression compte les œuvres découvertes")
+    func missionProgressCountsDiscoveredItems() {
+
+        let mission = MissionGenerator.generateMission()
+
+        let updatedMission = mission.enumerated().map { index, item in
+            var updatedItem = item
+
+            if index < 2 {
+                updatedItem.isDiscovered = true
+            }
+
+            return updatedItem
+        }
+
+        let discoveredCount = updatedMission.filter { item in
+            item.isDiscovered
+        }.count
+
+        #expect(discoveredCount == 2)
+    }
 }
