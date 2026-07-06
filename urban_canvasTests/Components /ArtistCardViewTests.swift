@@ -118,4 +118,15 @@ struct ArtistCardViewTests {
 
         #expect(card.index == 3)
     }
+    
+    // Vérifie que l'œuvre possède un titre.
+    @Test("L'œuvre possède un titre")
+    func missionArtworkHasTitle() {
+
+        let item = MissionItem(
+            artwork: MockData.artworks[0]
+        )
+
+        #expect(item.artwork.title.isEmpty == false)
+    }
 }
