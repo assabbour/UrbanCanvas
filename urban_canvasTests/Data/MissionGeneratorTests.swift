@@ -3,15 +3,15 @@ import Testing
 
 struct MissionGeneratorTests {
     
-    // Vérifie qu'une mission contient 5 œuvres.
-    @Test("une mission contient 5 oeuvres")
-    func missionContainsFiveArtwork() {
-        
+    // Vérifie qu'une mission contient entre 3 et 5 œuvres.
+    @Test("Une mission contient entre 3 et 5 œuvres")
+    func missionContainsBetweenThreeAndFiveArtworks() {
+
         let mission = MissionGenerator.generateMission()
-        
-        #expect(mission.count == 5)
+
+        #expect(mission.count >= 3)
+        #expect(mission.count <= 5)
     }
-    
     // Vérifie qu'une mission ne contient pas deux fois la même œuvre.
     @Test("La mission ne contient pas de doublons")
     func missionHasNoDuplicateArtworks() {
@@ -52,17 +52,7 @@ struct MissionGeneratorTests {
 
         #expect(types.count >= 2)
     }
-    
-    // Vérifie que la mission contient entre 3 et 5 œuvres.
-    @Test("La mission contient entre 3 et 5 œuvres")
-    func missionContainsBetweenThreeAndFiveArtworks() {
-
-        let mission = MissionGenerator.generateMission()
-
-        #expect(mission.count >= 3)
-        #expect(mission.count <= 5)
-    }
-    
+        
     // Vérifie qu'un artiste n'apparaît pas deux fois dans une mission.
     @Test("La mission ne répète pas les artistes")
     func missionDoesNotRepeatArtists() {

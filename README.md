@@ -12,35 +12,99 @@ UrbanCanvas est une application permet de découvrir des œuvres de Street Art, 
 - Développer une application SwiftUI modulaire, réutilisable et testée.
 ---------------------------------------------------------------------------------
 ## Fonctionnalités
-###### Version 1 — Référencement et consultation
-- Affichage de la liste des œuvres de Street Art.
-- Consultation de la fiche détaillée d'une œuvre.
-- Navigation entre la liste et le détail.
-###### Version 2 — Tri et filtrage
-- Bouton d'ouverture des filtres.
-- Filtrage dynamique des œuvres par type d'art.
-- Popup de sélection des filtres.
-- Composants SwiftUI réutilisables.
-- Tests unitaires des composants et de la logique de filtrage.
-###### Version 3 — Exploration cartographique
-- Bascule entre le mode Liste et le mode Carte.
+
+### Version 1 — Référencement et consultation
+
+Cette première version permet de consulter les œuvres de Street Art présentes dans l’application.
+
+- Affichage d’une liste verticale des œuvres.
+- Présentation des informations principales dans la liste : nom de l’œuvre, image miniature et lieu.
+- Ouverture d’une fiche détail au clic sur une œuvre.
+- Affichage complet des informations d’une œuvre : titre, description, image, type d’art, conditions de conservation, date, auteur·ice et localisation.
+- Mise en place d’une navigation simple entre la liste des œuvres et la fiche détail.
+
+---
+
+### Version 2 — Tri et filtrage
+
+Cette version ajoute une logique de filtrage afin de faciliter la recherche des œuvres.
+
+- Ajout d’un bouton de filtrage en haut de l’écran principal.
+- Affichage d’un menu ou d’une popup de filtres.
+- Filtrage des œuvres par type d’art.
+- Mise à jour immédiate de la liste après sélection d’un filtre.
+- Création de composants SwiftUI réutilisables pour gérer les filtres.
+- Ajout de tests unitaires pour vérifier la logique de filtrage.
+
+---
+
+### Version 3 — Exploration cartographique
+
+Cette version permet d’explorer les œuvres depuis une carte interactive.
+
+- Ajout d’une bascule Liste / Carte avec un Picker.
+- Conservation de la vue Liste déjà créée dans la V1.
 - Affichage des œuvres sur une carte avec MapKit.
-- Marqueurs interactifs des œuvres.
-- Aperçu d'une œuvre directement sur la carte.
-- Navigation vers la fiche détail depuis la carte.
-###### Version 4 — Découverte des artistes
-- Navigation principale avec TabView.
-- Onglet dédié aux artistes.
-- Affichage des artistes sous forme de cartes.
-- Présentation du nom, de la photo, de l'âge, des origines et du style.
-- Ouverture du site web officiel d'un artiste.
-- Tests unitaires des composants et des modèles.
+- Ajout de marqueurs pour représenter les œuvres sur la carte.
+- Affichage d’un aperçu d’œuvre au clic sur un marqueur.
+- Présentation dans l’aperçu : image, titre et début de description.
+- Navigation vers la fiche détail complète depuis l’aperçu de la carte.
+
+---
+
+### Version 4 — Découverte des auteur·ices
+
+Cette version ajoute une nouvelle section dédiée aux artistes.
+
+- Refonte de la navigation principale avec une barre d’onglets.
+- Ajout d’un onglet pour l’exploration des œuvres.
+- Ajout d’un onglet dédié aux auteur·ices.
+- Affichage des auteur·ices sous forme de cartes.
+- Présentation des informations principales : nom, âge, origines, type d’art de prédilection et photo.
+- Utilisation d’une image de remplacement si aucune photo n’est disponible.
+- Ajout de tests unitaires pour les modèles, les composants et la navigation.
+
+---
+
+### Version 5 — Mission de découverte
+
+Cette version ajoute une nouvelle fonctionnalité permettant à l’utilisateur·ice de découvrir plusieurs œuvres sous forme de mission.
+
+- Ajout d’un onglet Mission accessible depuis la navigation principale.
+- Génération automatique d’une mission à partir des données mockées.
+- Sélection de 3 à 5 œuvres pour encourager la découverte de contenus variés.
+- Sélection basée uniquement sur les œuvres disponibles dans l’application.
+- Respect des contraintes de sélection :
+  - ne pas proposer deux fois la même œuvre ;
+  - éviter de répéter deux fois le/la même auteur·ice ;
+  - inclure au moins deux types d’art différents dans la mission.
+- Affichage des œuvres sélectionnées sous forme de cartes numérotées.
+- Présentation des informations principales dans chaque carte : titre, image, type d’art, auteur·ice et localisation.
+- Ouverture de la fiche détail d’une œuvre depuis la mission.
+- Possibilité de marquer une œuvre comme découverte.
+- Affichage de la progression de la mission, par exemple : `2 œuvres découvertes sur 5`.
+- Mise à jour immédiate de la progression lorsqu’une œuvre est marquée comme découverte.
+- Affichage d’un message de réussite lorsque toutes les œuvres sont découvertes.
+- Ajout d’un bouton Nouvelle mission pour recalculer une nouvelle sélection.
+- Ajout de tests unitaires pour la génération de mission, les cartes, la progression et les interactions principales.
+
+---
+
+## Contraintes techniques
+
+- Application développée exclusivement pour iPhone en mode portrait.
+- Interface réalisée uniquement avec SwiftUI.
+- Données entièrement statiques et mockées dans le projet.
+- Aucune API distante.
+- Aucune base de données locale comme CoreData ou SwiftData.
+- Images embarquées dans les assets ou chargées depuis une URL avec AsyncImage.
+- Versioning Git avec des commits dédiés pour chaque version et chaque fonctionnalité importante.
 ---------------------------------------------------------------------------------
 ## Branches Git
 - main : version stable
 - dev : développement
 ---------------------------------------------------------------------------------
-## Architecture
+## Architecture V5
 
 UrbanCanvas
 ├── App
@@ -57,7 +121,8 @@ UrbanCanvas
 │   ├── ArtworkTopBarView.swift → barre Liste / Carte + filtre
 │   ├── FilterPopupView.swift → popup des filtres
 │   ├── FilterOptionButtonView.swift → bouton de filtre
-│   └── FloatingTabBarView.swift → navigation Œuvres / Auteurs
+│   ├── FloatingTabBarView.swift → navigation Œuvres / Mission / Auteurs
+│   └── MissionCardView.swift → carte d’une œuvre dans une mission
 
 ├── Data
 │   └── MockData.swift → données statiques : œuvres + artistes
@@ -67,17 +132,34 @@ UrbanCanvas
 │   ├── Artwork.swift → modèle œuvre
 │   ├── ArtType.swift → type d’art
 │   ├── DisplayMode.swift → mode Liste / Carte
-│   └── MainTab.swift → onglet principal
+│   ├── MainTab.swift → onglets principaux : œuvres / mission / auteurs
+│   └── MissionItem.swift → élément de mission avec œuvre + état découvert
+
+├── Services
+│   └── MissionGenerator.swift → génère automatiquement une mission de 3 à 5 œuvres
 
 ├── Views
 │   ├── MainView.swift → écran racine avec FloatingTabBar
 │   ├── ArtworkListView.swift → liste + filtre + carte
 │   ├── ArtworkDetailView.swift → détail d’une œuvre
 │   ├── ArtworkMapScreenView.swift → carte interactive
-│   └── ArtistListView.swift → grille des auteurs
+│   ├── ArtistListView.swift → grille des auteurs
+│   └── MissionView.swift → écran Mission : progression, cartes, nouvelle mission
 
 └── urban_canvasTests
-    ├── Components → tests des composants
-    ├── Data → tests MockData / filtres
-    ├── Models → tests des modèles
-    └── Views → tests des écrans
+    ├── Components
+    │   ├── MissionCardViewTests.swift → tests de la carte mission
+    │   └── autres tests composants
+    │
+    ├── Data
+    │   ├── MissionGeneratorTests.swift → tests génération mission
+    │   └── autres tests données
+    │
+    ├── Models
+    │   ├── MissionItemTests.swift → tests élément de mission
+    │   ├── MainTabTests.swift → tests onglet mission
+    │   └── autres tests modèles
+    │
+    └── Views
+        ├── MissionViewTests.swift → tests écran mission / progression
+        └── autres tests écrans
