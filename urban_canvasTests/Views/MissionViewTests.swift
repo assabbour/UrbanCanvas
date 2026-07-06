@@ -175,4 +175,17 @@ struct MissionViewTests {
 
         #expect(discoveredCount == mission.count)
     }
+    
+    // Vérifie qu'une nouvelle mission réinitialise toutes les œuvres.
+    @Test("Une nouvelle mission réinitialise la progression")
+    func newMissionResetsProgress() {
+
+        let mission = MissionGenerator.generateMission()
+
+        #expect(
+            mission.allSatisfy { item in
+                item.isDiscovered == false
+            }
+        )
+    }
 }
