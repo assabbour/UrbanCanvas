@@ -21,4 +21,27 @@ struct MissionCardViewTests {
         #expect(view.index == 1)
     }
     
+    // Vérifie que l'action découvrir est bien appelée.
+    @Test("La carte Mission déclenche l'action découvrir")
+    func missionCardCallsDiscoverAction() {
+
+        var didDiscover = false
+
+        let item = MissionItem(
+            artwork: MockData.artworks[0]
+        )
+
+        let view = MissionCardView(
+            index: 1,
+            item: item,
+            onDiscover: {
+                didDiscover = true
+            }
+        )
+
+        view.onDiscover()
+
+        #expect(didDiscover == true)
+    }
+    
 }
