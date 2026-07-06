@@ -160,4 +160,19 @@ struct MissionViewTests {
 
         #expect(Set(artists).count == artists.count)
     }
+    
+    // Vérifie qu'une mission peut être entièrement découverte.
+    @Test("Toutes les œuvres peuvent être découvertes")
+    func allMissionArtworksCanBeDiscovered() {
+
+        var mission = MissionGenerator.generateMission()
+
+        for index in mission.indices {
+            mission[index].isDiscovered = true
+        }
+
+        let discoveredCount = mission.filter { $0.isDiscovered }.count
+
+        #expect(discoveredCount == mission.count)
+    }
 }
