@@ -1,0 +1,26 @@
+# Plateforme par défaut utilisée par Fastlane.
+default_platform(:ios)
+
+platform :ios do
+
+  # Lane utilisée pour lancer les tests unitaires.
+  # Elle permet de vérifier automatiquement que le projet reste stable.
+  desc "Run unit tests"
+  lane :tests do
+    scan(
+      scheme: "urban_canvas",
+      device: "iPhone 17 Pro"
+    )
+  end
+
+  # Lane utilisée pour préparer un build iOS.
+  # Pour l'instant, elle prépare la logique de build.
+  # Le déploiement TestFlight sera ajouté avec un compte Apple Developer.
+  desc "Build the iOS app"
+  lane :build do
+    build_app(
+      scheme: "urban_canvas",
+      export_method: "app-store"
+    )
+  end
+end
