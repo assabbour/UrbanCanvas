@@ -32,7 +32,7 @@ struct ArtworkListView: View {
                             onFilterTap: {
                                 isFilterPresented.toggle()
                             }
-                        ).padding(.top, 52)
+                        ).padding(.top, 8)
                             .zIndex(2)
                         Text("Liste des Street arts")
                             .font(.title)

@@ -33,6 +33,7 @@ struct ArtworkMapScreenView: View {
         )
     )
 
+    
     var body: some View {
 
         ZStack(alignment: .top) {
@@ -56,26 +57,32 @@ struct ArtworkMapScreenView: View {
 
                             // Sélection de l'œuvre au toucher.
                             .onTapGesture {
+                                print(" Marqueur cliqué : \(artwork.title)")
                                 selectedArtwork = artwork
                             }
-
                     }
-
                 }
-
             }
             .ignoresSafeArea()
+            
+            // Quand une carte d'aperçu est ouverte,
+            // on désactive les clics sur la carte pour éviter qu'elle bloque les boutons.
+            .allowsHitTesting(selectedArtwork == nil)
 
-            // Barre supérieure réutilisable.
+            // Barre supérieure affichée au-dessus de la carte.
             ArtworkTopBarView(
                 selectedMode: $selectedMode,
                 onFilterTap: {
                     isFilterPresented.toggle()
                 }
             )
+            .padding(.top, 8)
             .zIndex(2)
-
         }
+
+        // Cache la barre de navigation en mode carte.
+        // Ça évite que SwiftUI pousse la top bar vers le bas.
+        .toolbar(.hidden, for: .navigationBar)
 
         // Carte d'aperçu affichée lorsqu'une œuvre est sélectionnée.
         .overlay(alignment: .bottom) {
@@ -83,44 +90,24 @@ struct ArtworkMapScreenView: View {
             if let selectedArtwork {
 
                 ArtworkPreviewCardView(
-
                     artwork: selectedArtwork,
-
-                    // Ferme l'aperçu.
                     onClose: {
                         self.selectedArtwork = nil
                     },
-
-                    // Ouvre la fiche détail.
                     onOpenDetail: {
-
-                        // Enregistre l'œuvre à afficher.
                         self.artworkToShowDetail = selectedArtwork
-
-                        // Ferme l'aperçu.
                         self.selectedArtwork = nil
                     }
                 )
-
-                // Laisse de la place pour la barre d'onglets.
                 .padding(.bottom, 90)
-
-                // Place la carte au-dessus de la Map.
                 .zIndex(10)
-
             }
-
         }
 
         // Navigation vers la fiche détail.
         .navigationDestination(item: $artworkToShowDetail) { artwork in
-
-            ArtworkDetailView(
-                artwork: artwork
-            )
-
+            ArtworkDetailView(artwork: artwork)
         }
-
     }
 
 }
