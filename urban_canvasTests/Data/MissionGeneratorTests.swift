@@ -76,4 +76,16 @@ struct MissionGeneratorTests {
         #expect(Set(artistNames).count == artistNames.count)
     }
     
+    // Vérifie qu'une mission ne contient pas deux fois la même œuvre.
+    @Test("La mission ne contient pas d'œuvre en double")
+    func missionDoesNotContainDuplicateArtworks() {
+
+        let mission = MissionGenerator.generateMission()
+
+        let artworkIds = mission.map { item in
+            item.artwork.id
+        }
+
+        #expect(Set(artworkIds).count == artworkIds.count)
+    }
 }
