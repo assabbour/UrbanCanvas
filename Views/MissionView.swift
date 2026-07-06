@@ -53,8 +53,8 @@ struct MissionView: View {
                         .background(Color.orange)
                         .foregroundStyle(.white)
                         .clipShape(Capsule())
-
                 }
+                .padding(.horizontal)
                 // Message affiché seulement quand toute la mission est terminée.
                 if discoveredCount == missionItems.count {
                     Text("Mission terminée ! Vous avez découvert \(missionItems.count) œuvres urbaines.")

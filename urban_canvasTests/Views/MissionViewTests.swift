@@ -103,5 +103,17 @@ struct MissionViewTests {
         #expect(discoveredCount == 2)
     }
     
+    // Vérifie qu'une nouvelle mission démarre avec 0 œuvre découverte.
+    @Test("Une nouvelle mission démarre à zéro")
+    func newMissionStartsWithZeroDiscoveredArtworks() {
+
+        let newMission = MissionGenerator.generateMission()
+
+        let discoveredCount = newMission.filter { item in
+            item.isDiscovered
+        }.count
+
+        #expect(discoveredCount == 0)
+    }
     
 }
