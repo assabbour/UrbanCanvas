@@ -92,4 +92,15 @@ struct ArtistCardViewTests {
         )
     }
     
+    // Vérifie qu'une œuvre n'est pas découverte par défaut.
+    @Test("Une œuvre démarre non découverte")
+    func missionCardStartsNotDiscovered() {
+
+        let item = MissionItem(
+            artwork: MockData.artworks[0]
+        )
+
+        #expect(item.isDiscovered == false)
+    }
+    
 }
