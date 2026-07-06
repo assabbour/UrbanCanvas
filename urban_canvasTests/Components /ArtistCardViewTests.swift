@@ -113,7 +113,8 @@ struct ArtistCardViewTests {
 
         let card = MissionCardView(
             index: 3,
-            item: item
+            item: item,
+            onDiscover: <#T##() -> Void#>
         )
 
         #expect(card.index == 3)

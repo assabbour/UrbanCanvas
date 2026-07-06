@@ -21,11 +21,21 @@ struct MissionCardViewTests {
         #expect(view.index == 1)
     }
     
+    
     // Vérifie que l'action découvrir est bien appelée.
     @Test("La carte Mission déclenche l'action découvrir")
     func missionCardCallsDiscoverAction() {
 
-        var didDiscover = false
+        // Objet simple pour vérifier si l'action a été appelée.
+        final class DiscoverSpy {
+            var wasCalled = false
+
+            func call() {
+                wasCalled = true
+            }
+        }
+
+        let spy = DiscoverSpy()
 
         let item = MissionItem(
             artwork: MockData.artworks[0]
@@ -35,13 +45,13 @@ struct MissionCardViewTests {
             index: 1,
             item: item,
             onDiscover: {
-                didDiscover = true
+                spy.call()
             }
         )
 
         view.onDiscover()
 
-        #expect(didDiscover == true)
+        #expect(spy.wasCalled == true)
     }
-    
+
 }
