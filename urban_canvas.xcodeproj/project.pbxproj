@@ -21,16 +21,6 @@
 		F1CFF3972FF6711500357C40 /* urban_canvasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = urban_canvasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		F13FAB922FFB8FC6007409E5 /* Exceptions for "Data" folder in "urban_canvasTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				MissionGenerator.swift,
-			);
-			target = F1CFF3962FF6711500357C40 /* urban_canvasTests */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F1CC13752FF52AEB004903B8 /* Models */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -39,9 +29,6 @@
 		};
 		F1CC13792FF52B44004903B8 /* Data */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				F13FAB922FFB8FC6007409E5 /* Exceptions for "Data" folder in "urban_canvasTests" target */,
-			);
 			path = Data;
 			sourceTree = "<group>";
 		};
