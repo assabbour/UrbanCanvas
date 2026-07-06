@@ -147,4 +147,17 @@ struct MissionViewTests {
         #expect(mission.count >= 3)
         #expect(mission.count <= 5)
     }
+    
+    // Vérifie qu'un artiste n'est présent qu'une seule fois dans la mission.
+    @Test("Les artistes sont uniques dans la mission")
+    func missionContainsUniqueArtists() {
+
+        let mission = MissionGenerator.generateMission()
+
+        let artists = mission.map { item in
+            item.artwork.artist.name
+        }
+
+        #expect(Set(artists).count == artists.count)
+    }
 }
