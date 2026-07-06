@@ -1,4 +1,4 @@
-# Nom du workflow affiché dans l'onglet Actions de GitHub.
+# Workflow affiché dans l'onglet Actions de GitHub.
 name: iOS CI
 
 # Déclencheurs du workflow.
@@ -36,8 +36,9 @@ jobs:
         run: xcodebuild -version
 
       # Lance les tests unitaires du projet iOS.
-      - name: Run tests
+      - name: Build and test
         run: |
           xcodebuild test \
             -scheme urban_canvas \
-            -destination 'platform=iOS Simulator,name=iPhone 16'
+            -destination 'platform=iOS Simulator,name=iPhone 17 Pro,OS=26.5' \
+            CODE_SIGNING_ALLOWED=NO
