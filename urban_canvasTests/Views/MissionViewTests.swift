@@ -52,4 +52,18 @@ struct MissionViewTests {
             }
         )
     }
+    
+    // Vérifie que chaque élément de mission contient une œuvre valide.
+    @Test("La mission contient des œuvres valides")
+    func missionContainsValidArtworks() {
+
+        let mission = MissionGenerator.generateMission()
+
+        #expect(
+            mission.allSatisfy { item in
+                item.artwork.title.isEmpty == false &&
+                item.artwork.imageName.isEmpty == false
+            }
+        )
+    }
 }
