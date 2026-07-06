@@ -56,4 +56,14 @@ struct FloatingTabBarViewTests {
         #expect(selectedTab == .artworks)
     }
     
+    // Vérifie que la barre peut être créée avec l'onglet mission.
+        @Test("FloatingTabBarView peut être créée avec l'onglet mission")
+        func floatingTabBarCanBeCreatedWithMissionTab() {
+
+            let view = FloatingTabBarView(
+                selectedTab: .constant(.mission)
+            )
+
+            #expect(view != nil)
+        }
 }
