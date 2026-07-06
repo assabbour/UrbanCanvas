@@ -1,8 +1,8 @@
 import Foundation
-//L'application contient deux sections :
-// - Œuvres
-// - Auteurs
+
+// Onglets principaux de l'application.
 enum MainTab {
     case artworks
+    case mission
     case artists
 }
