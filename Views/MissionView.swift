@@ -31,6 +31,27 @@ struct MissionView: View {
                     Text("\(discoveredCount) œuvres découvertes sur \(missionItems.count)")
                         .font(.headline)
                         .foregroundStyle(.orange)
+                    // Si toutes les œuvres sont découvertes,
+                    // on affiche un message de réussite.
+                    if discoveredCount == missionItems.count {
+
+                        VStack(spacing: 10) {
+
+                            Text("Mission terminée !")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundStyle(.green)
+
+                            Text("Vous avez découvert \(missionItems.count) œuvres urbaines.")
+                                .font(.body)
+                                .foregroundStyle(.secondary)
+
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.green.opacity(0.12))
+                        .clipShape(RoundedRectangle(cornerRadius: 18))
+                    }
 
                     ForEach(Array(missionItems.enumerated()), id: \.element.id) { index, item in
                         MissionCardView(
