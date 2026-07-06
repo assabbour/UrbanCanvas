@@ -103,4 +103,19 @@ struct ArtistCardViewTests {
         #expect(item.isDiscovered == false)
     }
     
+    // Vérifie que le numéro de la carte est correctement reçu.
+    @Test("Le numéro de la mission est conservé")
+    func missionCardKeepsIndex() {
+
+        let item = MissionItem(
+            artwork: MockData.artworks[0]
+        )
+
+        let card = MissionCardView(
+            index: 3,
+            item: item
+        )
+
+        #expect(card.index == 3)
+    }
 }
