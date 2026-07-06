@@ -124,4 +124,17 @@ struct MissionViewTests {
 
         #expect(newMission.isEmpty == false)
     }
+    
+    // Vérifie qu'une nouvelle mission remet toutes les œuvres à l'état non découvert.
+    @Test("Une nouvelle mission réinitialise toutes les œuvres")
+    func newMissionResetsDiscoveryState() {
+
+        let newMission = MissionGenerator.generateMission()
+
+        #expect(
+            newMission.allSatisfy { item in
+                item.isDiscovered == false
+            }
+        )
+    }
 }
