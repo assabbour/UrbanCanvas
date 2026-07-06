@@ -129,4 +129,14 @@ struct ArtistCardViewTests {
 
         #expect(item.artwork.title.isEmpty == false)
     }
+    // Vérifie que l'œuvre possède une image.
+    @Test("L'œuvre possède une image")
+    func missionArtworkHasImage() {
+
+        let item = MissionItem(
+            artwork: MockData.artworks[0]
+        )
+
+        #expect(item.artwork.imageName.isEmpty == false)
+    }
 }
