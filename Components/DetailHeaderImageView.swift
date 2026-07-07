@@ -1,7 +1,6 @@
 import SwiftUI
 
-// Composant réutilisable qui affiche la grande image
-// en haut de l'écran de détail d'une œuvre.
+// Composant réutilisable qui affiche la grande image (haut de l'écran de détail d'une œuvre).
 struct DetailHeaderImageView: View {
 
     // Nom de l'image provenant des données.

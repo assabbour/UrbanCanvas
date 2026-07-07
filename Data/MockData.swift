@@ -16,7 +16,7 @@ struct MockData {
         origin: "France",
         style: "Pointillisme",
         imageName: "kan",
-        websiteURL: "https://www.kan-dmv.com"
+        websiteURL: "https://www.c215.fr"
     )
 
     static let c215 = Artist(
@@ -27,7 +27,7 @@ struct MockData {
         origin: "France",
         style: "Stencil",
         imageName: "c215",
-        websiteURL: "https://c215.fr"
+        websiteURL: "https://kandmv.com"
     )
 
     static let mto = Artist(
@@ -38,7 +38,7 @@ struct MockData {
         origin: "France",
         style: "Mural",
         imageName: "mto",
-        websiteURL: "https://www.mto-art.com"
+        websiteURL: "https://www.space-invaders.com/home/"
     )
 
     static let invader = Artist(
@@ -60,7 +60,7 @@ struct MockData {
         origin: "France",
         style: "Graffiti",
         imageName: "jace",
-        websiteURL: "https://www.jacegouzou.net"
+        websiteURL: "https://www.c215.fr"
     )
 
     // MARK: - Artworks

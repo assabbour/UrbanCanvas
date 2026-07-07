@@ -1,7 +1,6 @@
 import SwiftUI
 
-// Bouton réutilisable pour une option de filtre.
-// Exemple : Tous, Mural, Graffiti...
+// Bouton réutilisable pour une option de filtre (Tous, Mural, Graffiti...)
 struct FilterOptionButtonView: View {
 
     let title: String

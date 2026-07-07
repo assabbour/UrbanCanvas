@@ -9,7 +9,7 @@ struct MainView: View {
 
     var body: some View {
 
-        // ZStack permet d'afficher le contenu principal
+        // le contenu principal
         // ainsi que la barre de navigation flottante.
         ZStack {
 

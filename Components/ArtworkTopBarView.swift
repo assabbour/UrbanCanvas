@@ -1,8 +1,7 @@
 import Foundation
 import SwiftUI
 
-// Barre du haut réutilisable.
-// Elle contient le bouton Liste/Carte et le bouton filtre.
+// Barre du haut réutilisable (Liste/Carte et le bouton filtre).
 struct ArtworkTopBarView: View {
 
     // Mode affiché actuellement : liste ou carte.

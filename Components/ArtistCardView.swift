@@ -4,7 +4,7 @@ struct ArtistCardView: View {
 
     let artist: Artist
 
-    // Permet d'ouvrir une URL avec Safari.
+    // Ouvrir une URL avec Safari.
     @Environment(\.openURL) private var openURL
 
     var body: some View {
@@ -59,59 +59,3 @@ struct ArtistCardView: View {
         .clipShape(RoundedRectangle(cornerRadius: 24))
     }
 }
-/*
-import SwiftUI
-
-struct ArtistCardView: View {
-
-    let artist: Artist
-
-    var body: some View {
-        VStack(spacing: 12) {
-
-            Image(artist.imageName)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 74, height: 74)
-                .clipShape(Circle())
-                .padding(.top, 20)
-
-            Text(artist.name)
-                .font(.headline)
-                .fontWeight(.bold)
-                .foregroundStyle(.orange)
-                .multilineTextAlignment(.center)
-
-            VStack(spacing: 2) {
-                Text("Age : \(artist.age)")
-                Text("Origines : \(artist.origin)")
-                Text("Style : \(artist.style)")
-            }
-            .font(.caption)
-            .fontWeight(.semibold)
-            .multilineTextAlignment(.center)
-
-            Spacer()
-
-            Link(
-                "Site web",
-                destination: URL(string: artist.websiteURL)!
-            )
-            .font(.caption)
-            .fontWeight(.bold)
-            .foregroundStyle(.white)
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 9)
-            .background(Color.orange)
-            .clipShape(Capsule())
-            .padding(.horizontal, 14)
-            .padding(.bottom, 14)
-
-        }
-        .frame(height: 240)
-        .frame(maxWidth: .infinity)
-        .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 24))
-    }
-}
-*/

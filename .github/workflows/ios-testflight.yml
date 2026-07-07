@@ -1,0 +1,35 @@
+# Workflow préparé pour un futur déploiement TestFlight.
+# Il ne publie pas encore l'application car cela nécessite un compte Apple Developer.
+name: iOS TestFlight CD
+
+# Déclenchement manuel depuis l'onglet Actions de GitHub.
+on:
+  workflow_dispatch:
+
+jobs:
+  prepare-testflight:
+    name: Prepare TestFlight deployment
+    runs-on: macos-latest
+
+    steps:
+      # Récupère le code du projet.
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      # Affiche la version de Xcode disponible.
+      - name: Show Xcode version
+        run: xcodebuild -version
+
+      # Installe Fastlane sur le runner GitHub.
+      - name: Install Fastlane
+        run: gem install fastlane
+
+      # Vérifie que Fastlane est bien installé.
+      - name: Show Fastlane version
+        run: fastlane --version
+
+      # Message indiquant que le workflow est préparé.
+      - name: TestFlight deployment placeholder
+        run: |
+          echo "Fastlane is ready."
+          echo "TestFlight deployment will be activated later with Apple Developer credentials."
