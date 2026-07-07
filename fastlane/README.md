@@ -1,30 +1,40 @@
-# Fastlane
+fastlane documentation
+----
 
-Ce dossier contient la configuration Fastlane du projet UrbanCanvas.
+# Installation
 
-## Objectif
+Make sure you have the latest version of the Xcode command line tools installed:
 
-Fastlane permet d'automatiser plusieurs tâches du projet iOS :
-
-- lancement des tests unitaires ;
-- génération d'un build de l'application ;
-- préparation d'un futur déploiement sur TestFlight.
-
-## Commandes disponibles
-
-Lancer les tests :
-
-```bash
-fastlane tests
+```sh
+xcode-select --install
 ```
 
-Préparer un build :
+For _fastlane_ installation instructions, see [Installing _fastlane_](https://docs.fastlane.tools/#installing-fastlane)
 
-```bash
-fastlane build
+# Available Actions
+
+## iOS
+
+### ios tests
+
+```sh
+[bundle exec] fastlane ios tests
 ```
 
-## Remarque
+Run unit tests
 
-Le déploiement TestFlight n'est pas encore configuré.
-Il nécessitera un compte Apple Developer ainsi que les certificats de signature.
+### ios build
+
+```sh
+[bundle exec] fastlane ios build
+```
+
+Build the iOS app
+
+----
+
+This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
+
+More information about _fastlane_ can be found on [fastlane.tools](https://fastlane.tools).
+
+The documentation of _fastlane_ can be found on [docs.fastlane.tools](https://docs.fastlane.tools).

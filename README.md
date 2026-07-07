@@ -5,6 +5,11 @@ de réaliser des missions de découverte à partir de données entièrement mock
 
 ---------------------------------------------------------------------------------
 
+## Liens du projet
+- Trello : [Tableau Trello UrbanCanvas](https://trello.com/b/mRY6Wu9R/urbancanvas)
+- FigJam : [Board FigJam UrbanCanvas](https://www.figma.com/board/6wNpXyLIH0u9sMRkT9jpGV/Urban-Canvas?node-id=0-1&p=f&t=mjyO1smQr9PISLRJ-0)
+---------------------------------------------------------------------------------
+
 ## Objectifs
 - Découvrir des œuvres de Street Art.
 - Consulter les informations détaillées d'une œuvre.
